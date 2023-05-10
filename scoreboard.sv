@@ -3,7 +3,7 @@ class scoreboard;
  mailbox mon2scb;
  int no_trans;
  bit[7:0]fifo[DEPTH];
- reg [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
+ bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
  
  
  function new(mailbox mon2scb);
