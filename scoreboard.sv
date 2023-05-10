@@ -17,7 +17,7 @@ class scoreboard;
    forever begin   
     transaction trans_score;
     #50
-    mon2scb.get(trans);
+    mon2scb.get(trans_score);
     if(trans_score.w_en)begin
       fifo[w_ptr] = trans_score.data_in;
       w_ptr++;
