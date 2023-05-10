@@ -15,15 +15,15 @@ class scoreboard;
  
   task main;
    forever begin   
-    transaction trans;
+    transaction trans_score;
     #50
     mon2scb.get(trans);
-    if(trans.w_en)begin
-      fifo[w_ptr] = trans.data_in;
+    if(trans_score.w_en)begin
+      fifo[w_ptr] = trans_score.data_in;
       w_ptr++;
     end  
-    if(trans.r_en)begin
-      if(trans.data_out == fifo[r_ptr])begin
+    if(trans_score.r_en)begin
+      if(trans_score.data_out == fifo[r_ptr])begin
         r_ptr++;
         $display("yup");
       end
@@ -31,10 +31,10 @@ class scoreboard;
         $display("nop");
       end
     end
-    if(trans.full)begin
+    if(trans_score.full)begin
       $display("fifo is full");
     end
-    if(trans.empty)begin
+    if(trans_score.empty)begin
       $display("fifo is empty");
     end
     no_trans++;
