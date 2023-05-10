@@ -3,7 +3,7 @@
 //`include "transaction.sv"
 class generator;
   //declaring transaction class 
-  rand transaction trans;
+  rand transaction trans_gen;
   mailbox gen2drv;
   int repeat_count;
   event drv2gen;
@@ -15,9 +15,9 @@ class generator;
   
   task main();
    repeat(repeat_count)begin 
-    trans = new();
-    if(!trans.randomize()) $fatal("Gen::trans randomization failed"); 
-     gen2drv.put(trans);
+    trans_gen = new();
+    if(!trans_gen.randomize()) $fatal("Gen::trans randomization failed"); 
+     gen2drv.put(trans_gen);
    end 
    ->drv2gen;
   endtask
