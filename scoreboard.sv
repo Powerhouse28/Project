@@ -1,13 +1,14 @@
 //`include "transaction.sv"
 class scoreboard;
- mailbox mon2scb;
+mailbox mon2scb scr2dri;
  int no_trans;
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
  
  
- function new(mailbox mon2scb);
+ function new(mailbox mon2scb,scr2dri);
    this.mon2scb = mon2scb;
+  this.scr2dri = scr2dri;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
    end
@@ -15,9 +16,10 @@ class scoreboard;
  
   task main;
    forever begin   
-    transaction trans_score;
+    transaction trans_score, trans_score_out;
     #50
     mon2scb.get(trans_score);
+    scr2dri.get(trans_score_out)
     if(trans_score.w_en)begin
       fifo[w_ptr] = trans_score.data_in;
       w_ptr++;
