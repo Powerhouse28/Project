@@ -22,7 +22,7 @@ module synchronous_fifo
       w_ptr <= 0; 
       r_ptr <= 0;
       data_out <= 0;
-      for(int i=0 ;i<32; i++)
+      for(int i=0 ;i<8; i++)
             begin
               fifo[i] <= 0;
             end
