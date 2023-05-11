@@ -17,6 +17,7 @@ endclass
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
+    tr = new();
   endfunction  
   
   task driver :: reset;
@@ -30,4 +31,9 @@ endclass
   endtask
 
   task driver :: drive;
-    $display("");
+  tr = new();
+    $display("Driving the output");
+    `DRIVER_IF.data_in <= tr.data_in;
+    `DRIVER_IF.wr_en <= tr.wr_en;
+    `DRIVER_IF.rd_en <= tr.rd_en;
+    @(vif_fifo.driver_cb);
