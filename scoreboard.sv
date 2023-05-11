@@ -24,12 +24,12 @@ mailbox mon2scb dri2scr;
       mon2scb=new();
     mon2scb.get(trans_score_out);
     dri2scr.get(trans_score_in);
-    if(trans_score_out.wd_en)begin
-     fifo[w_ptr] = trans_score_out.data_in;
+    if(trans_score_in.wd_en)begin
+     fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     end  
-    if(trans_score_out.rd_en)begin
-     if(trans_score_out.data_out == fifo[r_ptr])begin
+    if(trans_score_in.rd_en)begin
+     if(trans_score_in.data_out == fifo[r_ptr])begin
         r_ptr++;
         $display("yup");
       end
@@ -38,11 +38,11 @@ mailbox mon2scb dri2scr;
       end
     end
     assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t      Output is %h and is as expected Success",$time, trans_score_out.data_out);
-
-    if(trans_score_out.full)begin
+    else $error("%t Output is wrong, Failed",$time);
+    if(trans_score_in.full)begin
       $display("fifo is full");
     end
-    if(trans_score_out.empty)begin
+    if(trans_score_in.empty)begin
       $display("fifo is empty");
     end
     no_trans++;
