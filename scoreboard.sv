@@ -1,7 +1,7 @@
 //`include "transaction.sv"
 class scoreboard;
  transaction trans_score_in, trans_score_out;
-mailbox mon2scb dri2scr;
+mailbox mon2scb, dri2scr;
  int no_trans;
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
