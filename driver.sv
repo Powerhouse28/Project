@@ -6,11 +6,12 @@ class driver;
   
   int no_trans;
   virtual fifo_intf vif_fifo;
-  mailbox gen2drv;
+  mailbox gen2drv, drv2scr;
   
   function new(virtual fifo_intf vif_fifo,mailbox gen2drv);
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
+    this.drv2scr = drv2scr;
   endfunction  
   
   task reset;
@@ -22,3 +23,6 @@ class driver;
     wait(!vif_fifo.rst);
     $display("done resetting");
   endtask
+
+  task drive ;
+    $display("");
