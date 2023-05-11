@@ -18,14 +18,14 @@ mailbox mon2scb scr2dri;
    forever begin   
     transaction trans_score, trans_score_out;
     #50
-    mon2scb.get(trans_score);
-    scr2dri.get(trans_score_out)
+    mon2scb.get(trans_score_out);
+    scr2dri.get(trans_score_in)
     if(trans_score.w_en)begin
-      fifo[w_ptr] = trans_score.data_in;
+     fifo[w_ptr] = trans_score_out.data_in;
       w_ptr++;
     end  
     if(trans_score.r_en)begin
-      if(trans_score.data_out == fifo[r_ptr])begin
+     if(trans_score_out.data_out == fifo[r_ptr])begin
         r_ptr++;
         $display("yup");
       end
