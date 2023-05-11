@@ -35,7 +35,7 @@ mailbox mon2scb, dri2scr;
     mon2scb.get(trans_score_out);
     dri2scr.get(trans_score_in);
     cov.sample();
-    if(trans_score_in.wd_en)begin
+if(trans_score_in.wr_en)begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     end  
