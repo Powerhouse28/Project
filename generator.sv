@@ -1,6 +1,6 @@
 //Generator generates signals and declares the transaction class handles
 //Randomise transactions
-//`include "transaction.sv"
+`include "transaction.sv"
 class generator;
   //declaring transaction class 
   rand transaction trans_gen;
