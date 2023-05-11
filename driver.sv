@@ -13,7 +13,7 @@ class driver;
 
 endclass
 
-  function driver :: new(virtual fifo_intf vif_fifo,mailbox gen2drv);
+  function driver :: new(virtual fifo_intf vif_fifo,mailbox gen2drv, drv2scr);
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
@@ -45,5 +45,5 @@ endclass
       drv2scr.put(tr);
       @(vif_fifo.driver_cb);
     end
-    
+
   endtask : drive
