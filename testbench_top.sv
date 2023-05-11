@@ -1,4 +1,4 @@
-`include "interface.sv"
+//`include "interface.sv"
 module tb_top;
  bit clk,rst_n;
  
