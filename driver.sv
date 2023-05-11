@@ -1,4 +1,4 @@
-`include "transaction.sv"
+//`include "transaction.sv"
 //`include "transaction.sv"
 `define DRIVER_IF fifo_intf.DRIVER.driver_cb
 //DRIVER_IF ponts to the DRIVER modport in interface
