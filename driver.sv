@@ -11,8 +11,6 @@ class driver;
   extern task reset ();
   extern task drive ();
 
-endclass
-
   function driver :: new(virtual fifo_intf vif_fifo,mailbox gen2drv, drv2scr);
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
@@ -47,3 +45,5 @@ endclass
     end
 
   endtask : drive
+
+endclass
