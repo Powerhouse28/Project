@@ -27,9 +27,9 @@ class environment;
     scb = new(dri2scr,mon2scb);
   endfunction
   
- // task pre_test();
- //  drv.reset();
- // endtask
+  task pre_test();
+   drv.reset();
+  endtask
   
   task test();
    gen.main();
@@ -46,7 +46,7 @@ class environment;
   endtask
   
   task run();
-   //pre_test();
+   pre_test();
    test();
    post_test();
    $finish;
