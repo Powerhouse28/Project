@@ -39,7 +39,8 @@ class driver;
     //else  $display("Stack still empty");
     @(vif_fifo.driver_cb);
 
-    forever begin
+    // forever begin
+      begin
       //tr = new();
       drv2scr.put(tr);
       @(vif_fifo.driver_cb);
