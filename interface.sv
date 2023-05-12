@@ -3,7 +3,7 @@
 //#parameter DATA_WIDTH=8;
 //#parameter DEPTH= 8;
 
-interface fifo_if;
+interface fifo_intf;
 reg clk,rst_n;
 reg wr_en, rd_en;
 reg [DATA_WIDTH-1:0] data_in;
