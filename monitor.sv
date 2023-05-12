@@ -1,4 +1,4 @@
-`define fifo_intf.monitor_cb
+`define MONITOR_IF fifo_intf.monitor_cb
 
 class monitor;
 virtual fifo_intf vif_fifo;
