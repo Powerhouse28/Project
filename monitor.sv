@@ -10,9 +10,7 @@ this.vif_fifo =vif_fifo;
 this.mon2scb = mon2scb;
 endfunction
 
-task main;
-forever begin
-transaction trans_mon;
+
  
  task main;
   forever begin
