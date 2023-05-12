@@ -21,7 +21,7 @@ class driver;
   
   task reset;
     $display("resetting");
-    wait(vif_fifo.rst);
+    wait(vif_fifo.rst_n);
     `DRIVER_IF.data_in <= 0;
     `DRIVER_IF.wr_en <= 0;
     `DRIVER_IF.rd_en <= 0;
