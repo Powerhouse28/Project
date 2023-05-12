@@ -1,5 +1,5 @@
 //`include "environment.sv"
-program test(fifo_if intf);
+program test(fifo_intf intf);
   environment env;
   
   initial begin
