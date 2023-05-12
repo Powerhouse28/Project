@@ -14,9 +14,9 @@ class environment;
   mailbox mon2scb,dri2scr;
   
   event drv2gen;//to show generation of signals have stopped
-  virtual fifo_if vif_fifo;
+  virtual fifo_intf vif_fifo;
   
-  function new(virtual fifo_if vif_fifo);
+  function new(virtual fifo_intf vif_fifo);
     this.vif_fifo = vif_fifo;
     gen2drv = new();
     mon2scb = new();
