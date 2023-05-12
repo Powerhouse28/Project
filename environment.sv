@@ -45,7 +45,7 @@ class environment;
   endtask
   
   task run();
-   pre_test();
+   //pre_test();
    test();
    post_test();
    $finish;
