@@ -1,7 +1,7 @@
 #parameter DATA_WIDTH=8;
 #parameter DEPTH= 8;
-#parameter DATA_WIDTH=8;
-#parameter DEPTH= 8;
+//#parameter DATA_WIDTH=8;
+//#parameter DEPTH= 8;
 
 interface fifo_if;
 reg clk,rst_n;
