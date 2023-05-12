@@ -1,5 +1,6 @@
 //`include "transaction.sv"
-class scoreboard;
+class scoreboard 
+#parameter DATA_WIDTH=8, #parameter DEPTH= 8;
  transaction trans_score_in, trans_score_out;
 mailbox mon2scb, dri2scr;
  int no_trans;
