@@ -9,7 +9,7 @@ module tb_top;
   #5 rst_n = 0;
  end
  
- fifo_intf intf(clk,rst_n) ;
+ fifo_intf intf() ;
  test t1(intf);
 synchronous_fifo DUT
     (.data_out(intf.data_out),
