@@ -5,7 +5,7 @@ module synchronous_fifo
   ) 
 (
   input clk, rst_n,
-  input w_en, r_en,
+  input wr_en, rd_en,
   input [DATA_WIDTH-1:0] data_in,
   output reg [DATA_WIDTH-1:0] data_out,
   output full, empty
@@ -32,7 +32,7 @@ module synchronous_fifo
   // To write data to FIFO
   always@(posedge clk) 
   begin
-    if(w_en & !full)
+    if(wr_en & !full)
     begin
       fifo[w_ptr] <= data_in;
       w_ptr <= w_ptr + 1;
@@ -42,7 +42,7 @@ module synchronous_fifo
   // To read data from FIFO
   always@(posedge clk) 
   begin
-    if(r_en & !empty) 
+    if(rd_en & !empty) 
     begin
       data_out <= fifo[r_ptr];
       r_ptr <= r_ptr + 1;
