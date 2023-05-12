@@ -5,7 +5,7 @@ virtual fifo_intf vif_fifo;
 mailbox mon2scb; // initialising the mailbox
 
 
-function monitor :: new(virtual fifo_intf vif_fifo,mailbox mon2scb);
+function new(virtual fifo_intf vif_fifo,mailbox mon2scb);
 this.vif_fifo =vif_fifo;
 this.mon2scb = mon2scb;
 endfunction
