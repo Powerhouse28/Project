@@ -15,8 +15,8 @@ clocking driver_cb@(posedge clk);
     input clk,rst_n;
     input data_in;
     input wr_en,rd_en;
-    output data_out;
-    output full,empty;
+    input data_out;
+    input full,empty;
 endclocking
 
 clocking monitor_cb@(posedge clk);
