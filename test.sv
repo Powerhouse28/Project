@@ -7,6 +7,6 @@ program test(fifo_intf intf);
     env = new(intf);
     env.gen.repeat_count = 10;
     env.run();
-    $finish();
+   // $finish();
   end
 endprogram
