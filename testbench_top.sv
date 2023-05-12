@@ -11,13 +11,14 @@ module tb_top;
  
  fifo_intf intf(clk,rst_n) ;
  test t1(intf);
-synchronous_fifo DUT
+
+ synchronous_fifo DUT
     (.data_out(intf.data_out),
           .full(intf.full),
           .empty(intf.empty),
           .data_in(intf.data_in),
-          .w_en(intf.w_en),
-          .r_en(intf.r_en),
+     .wr_en(intf.wr_en),
+     .rd_en(intf.rd_en),
           .clk(intf.clk),
           .rst_n(intf.rst_n));
 endmodule
