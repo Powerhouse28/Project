@@ -11,14 +11,14 @@ class driver;
   extern task reset ();
   extern task drive ();
 
-  function driver :: new(virtual fifo_intf vif_fifo,mailbox gen2drv, drv2scr);
+  function new(virtual fifo_intf vif_fifo,mailbox gen2drv, drv2scr);
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
     tr = new();
   endfunction  
   
-  task driver :: reset;
+  task reset;
     $display("resetting");
     wait(vif_fifo.rst);
     `DRIVER_IF.data_in <= 0;
@@ -28,7 +28,7 @@ class driver;
     $display("done resetting");
   endtask
 
-  task driver :: drive;
+  task drive;
   tr = new();
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
@@ -44,6 +44,6 @@ class driver;
       @(vif_fifo.driver_cb);
     end
 
-  endtask : drive
+  endtask
 
 endclass
