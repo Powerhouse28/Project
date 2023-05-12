@@ -23,4 +23,4 @@ module tb_top;
           .rst_n(intf.rst_n));
 endmodule
 
-$finish
+
