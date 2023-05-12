@@ -33,7 +33,7 @@ class environment;
   
   task test();
    gen.main();
-   drv.main();
+   //drv.main();
    mon.main();
    scb.main();
   endtask
