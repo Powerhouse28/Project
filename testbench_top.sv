@@ -22,3 +22,5 @@ module tb_top;
           .clk(intf.clk),
           .rst_n(intf.rst_n));
 endmodule
+
+$finish
