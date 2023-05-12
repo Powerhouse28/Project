@@ -11,6 +11,7 @@ module tb_top;
  
  fifo_intf intf(clk,rst_n) ;
  test t1(intf);
+
  synchronous_fifo DUT
     (.data_out(intf.data_out),
           .full(intf.full),
