@@ -7,9 +7,9 @@ class driver;
   int no_trans;
   virtual fifo_intf vif_fifo;
   mailbox gen2drv, drv2scr;
-  extern function new (mailbox gen2drv, drv2scr, input virtual fifo_intf vif_fifo);
-  extern task reset ();
-  extern task drive ();
+ // function new (mailbox gen2drv, drv2scr, input virtual fifo_intf vif_fifo);
+ // task reset ();
+ // task drive ();
 
   function new(virtual fifo_intf vif_fifo,mailbox gen2drv, drv2scr);
     this.vif_fifo = vif_fifo;
