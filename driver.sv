@@ -7,6 +7,7 @@ class driver;
   int no_trans;
   virtual fifo_intf vif_fifo;
   mailbox gen2drv, drv2scr;
+  transaction tr;
  // function new (mailbox gen2drv, drv2scr, input virtual fifo_intf vif_fifo);
  // task reset ();
  // task drive ();
@@ -24,7 +25,7 @@ class driver;
     `DRIVER_IF.data_in <= 0;
     `DRIVER_IF.wr_en <= 0;
     `DRIVER_IF.rd_en <= 0;
-    wait(!vif_fifo.rst);
+    wait(!vif_fifo.rst_n);
     $display("done resetting");
   endtask
 
