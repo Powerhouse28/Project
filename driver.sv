@@ -16,7 +16,7 @@ class driver;
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
-    tr = new();
+  //  tr = new();
   endfunction  
   
   task reset;
