@@ -12,7 +12,7 @@ wire full, empty;
 
 clocking driver_cb@(posedge clk);
     default input #1 output #1;
-    input clk,rst_n;
+    output clk,rst_n;
     output data_in;
     output wr_en,rd_en;
     input data_out;
