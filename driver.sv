@@ -47,7 +47,7 @@ class driver;
       begin
       //tr = new();
   //    drv2scr.put(tr);
-  //    @(vif_fifo.driver_cb);
+      @(vif_fifo.driver_cb);
     end
 
     end
