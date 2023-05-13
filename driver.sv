@@ -17,6 +17,10 @@ class driver;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
   //  tr = new();
+    fork
+    reset();
+    drive();
+  join_none
   endfunction  
   
   task reset;
@@ -30,7 +34,7 @@ class driver;
   endtask
 
   task drive;
-  tr = new();
+    tr = new(fifo_intf);
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
     `DRIVER_IF.wr_en <= tr.wr_en;
