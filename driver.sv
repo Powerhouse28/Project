@@ -33,25 +33,26 @@ class driver;
     $display("done resetting");
   endtask
 
- task drive;
-  tr = new();
-  $display("Driving the output");
-  `DRIVER_IF.data_in <= tr.data_in;
-  `DRIVER_IF.wr_en <= tr.wr_en;
-  `DRIVER_IF.rd_en <= tr.rd_en;
-  @(vif_fifo.driver_cb);
-
-  repeat (drv.no_trans) begin
+  task drive;
+    repeat(10) begin
     tr = new();
+    $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
     `DRIVER_IF.wr_en <= tr.wr_en;
     `DRIVER_IF.rd_en <= tr.rd_en;
+    //assert (`DRIVER_IF.data_in == 0) $display("Data in the stack");
+    //else  $display("Stack still empty");
     @(vif_fifo.driver_cb);
-    drv2scr.put(tr);
-  end
+    // forever begin
+      begin
+      //tr = new();
+      drv2scr.put(tr);
+      @(vif_fifo.driver_cb);
+    end
 
-  drv2gen.trigger;
-endtask
+    end
+     $display("Finished driving");
+  endtask
 
 
 endclass
