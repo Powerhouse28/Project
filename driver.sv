@@ -25,11 +25,11 @@ class driver;
   
   task reset;
     $display("resetting");
-    wait(vif_fifo.rst_n);
+  //  wait(vif_fifo.rst_n);
     //`DRIVER_IF.data_in <= 0;
    // `DRIVER_IF.wr_en <= 0;
    // `DRIVER_IF.rd_en <= 0;
-    wait(!vif_fifo.rst_n);
+   // wait(!vif_fifo.rst_n);
     $display("done resetting");
   endtask
 
@@ -42,12 +42,12 @@ class driver;
   //  `DRIVER_IF.rd_en <= tr.rd_en;
     //assert (`DRIVER_IF.data_in == 0) $display("Data in the stack");
     //else  $display("Stack still empty");
-    @(vif_fifo.driver_cb);
+  //  @(vif_fifo.driver_cb);
     // forever begin
       begin
       //tr = new();
-      drv2scr.put(tr);
-      @(vif_fifo.driver_cb);
+  //    drv2scr.put(tr);
+  //    @(vif_fifo.driver_cb);
     end
 
     end
