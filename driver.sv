@@ -34,7 +34,7 @@ class driver;
   endtask
 
   task drive;
-    tr = new(fifo_intf);
+    tr = new();
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
     `DRIVER_IF.wr_en <= tr.wr_en;
