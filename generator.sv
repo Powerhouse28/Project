@@ -4,11 +4,11 @@
 class generator;
   //declaring transaction class 
   rand transaction trans_gen;
-  mailbox gen2drv;
+  mailbox gen2drv,drv2gen;
   int repeat_count;
-  event drv2gen;
+  
 
-  function new( mailbox gen2drv, event drv2gen);
+  function new( mailbox gen2drv, drv2gen);
     this.gen2drv = gen2drv;
     this.drv2gen = drv2gen;  
   endfunction
@@ -18,8 +18,8 @@ class generator;
     trans_gen = new();
     if(!trans_gen.randomize()) $fatal("Gen::trans randomization failed"); 
      gen2drv.put(trans_gen);
+     drv2gen.get(trans_gen);
    end 
-   ->drv2gen;
   endtask
 
 endclass
