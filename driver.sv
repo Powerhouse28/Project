@@ -1,5 +1,4 @@
 //`include "transaction.sv"
-//`include "transaction.sv"
 `define DRIVER_IF fifo_intf.driver_cb
 //DRIVER_IF ponts to the DRIVER modport in interface
 class driver;
@@ -46,7 +45,7 @@ class driver;
     // forever begin
       begin
       //tr = new();
-  //    drv2scr.put(tr);
+      drv2scr.put(tr);
       @(vif_fifo.driver_cb);
     end
 
