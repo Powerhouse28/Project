@@ -6,7 +6,7 @@ class driver;
   int no_trans;
   virtual fifo_intf vif_fifo;
   mailbox gen2drv, drv2scr;
-  transaction tr;
+  transaction tr = new();
  // function new (mailbox gen2drv, drv2scr, input virtual fifo_intf vif_fifo);
  // task reset ();
  // task drive ();
@@ -23,7 +23,7 @@ class driver;
   endfunction  
   
   task reset;
-  tr = new();
+  //tr = new();
   gen2drv.get(tr);
   $display("resetting");
   //  wait(vif_fifo.rst_n);
