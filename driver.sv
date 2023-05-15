@@ -35,7 +35,7 @@ class driver;
     //wait(!vif_fifo.rst_n);
     else begin
       $display("done resetting");
-      begin
+    end
   endtask
 
   task drive;
