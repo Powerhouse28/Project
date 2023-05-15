@@ -1,8 +1,7 @@
 //`include "transaction.sv"
-
-class scoreboard;
-mailbox mon2scb, drv2scr ; //scr2dri;
-
+class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
+ transaction trans_score_in, trans_score_out;
+mailbox mon2scb, drv2scr;
  int no_trans;
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
@@ -17,31 +16,35 @@ mailbox mon2scb, drv2scr ; //scr2dri;
  
  
  function new(mailbox mon2scb,drv2scr);
+	$display("yup");
    this.mon2scb = mon2scb;
-
+  mon2scb=new();
   this.drv2scr = drv2scr;
-
+  drv2scr=new();
+  cov = new;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
    end
+	 $display("yup23");
  endfunction 
- 
+	
   task main;
    forever begin   
-    
+	   $display("yup2");
     #50
-
-    mon2scb.get(trans_score);
-    drv2scr.get(trans_score_out)
-    if(trans_score.w_en)begin
-      fifo[w_ptr] = trans_score.data_in;
-
+      drv2scr=new();
+      mon2scb=new();
+    mon2scb.get(trans_score_out);
+    drv2scr.get(trans_score_in);
+    cov.sample();
+if(trans_score_in.wr_en)begin
+     fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     end  
     if(trans_score_in.rd_en)begin
      if(trans_score_in.data_out == fifo[r_ptr])begin
         r_ptr++;
-        $display("yup");
+	     $display("yup3");
       end
       else begin
         $display("nop");
