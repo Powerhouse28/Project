@@ -10,10 +10,10 @@ class environment;
   monitor mon;
   scoreboard scb;
   
-  mailbox gen2drv;
+  mailbox gen2drv,drv2gen;
   mailbox mon2scb,dri2scr;
   
-  event drv2gen;//to show generation of signals have stopped
+  //event drv2gen;//to show generation of signals have stopped
   virtual fifo_intf vif_fifo;
   
   function new(virtual fifo_intf vif_fifo);
@@ -21,9 +21,10 @@ class environment;
     gen2drv = new();
     mon2scb = new();
     dri2scr=new();
+    drv2gen= new();
     gen = new(gen2drv,drv2gen);
-    drv = new(vif_fifo,gen2drv,dri2scr);
-    mon = new(vif_fifo,mon2scb);
+    drv = new(gen2drv,drv2gen,dri2scr,vif_fifo);
+    mon = new(mon2scb,vif_fifo);
     scb = new(dri2scr,mon2scb);
   endfunction
   
