@@ -36,7 +36,9 @@ mailbox mon2scb, drv2scr;
     begin   
 	   $display("yup21"); 
       drv2scr=new();
+	    $display("drv2scr");
       mon2scb=new();
+	    $display("mon2scb");
     mon2scb.get(trans_score_out);
 	    $display("trans_score_out");
     drv2scr.get(trans_score_in);
