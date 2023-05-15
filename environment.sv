@@ -40,15 +40,15 @@ class environment;
   endtask
   
   task post_test();
-   wait(drv2gen.triggered);
-   wait(gen.repeat_count == drv.no_trans);
+  // wait(drv2gen.triggered);
+   if (gen.repeat_count == drv.no_trans);
   // wait(gen.repeat_count == scb.no_trans);
   endtask
   
   task run();
    pre_test();
    test();
-  // post_test();
+  post_test();
    $finish;
   endtask
 endclass
