@@ -37,7 +37,7 @@ mailbox mon2scb, drv2scr;
     mon2scb.get(trans_score_out);
     drv2scr.get(trans_score_in);
     cov.sample();
-trans_score_in.wr_en=1,trans_score_in.rd_en=1;
+trans_score_in.wr_en=1;trans_score_in.rd_en=1;
 if(trans_score_in.wr_en)begin
 	  $display("yup2");
      fifo[w_ptr] = trans_score_in.data_in;
