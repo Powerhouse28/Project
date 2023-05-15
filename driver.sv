@@ -53,7 +53,7 @@ class driver;
     //assert (`DRIVER_IF.data_in == 0) $display("Data in the stack");
     //else  $display("Stack still empty");
   //  @(vif_fifo.driver_cb);
-     forever begin
+     initial begin
       gen2drv.get(tr);
        drv2gen.put(tr);
       //tr = new();
