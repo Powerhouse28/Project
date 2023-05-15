@@ -23,8 +23,8 @@ class environment;
     dri2scr=new();
     drv2gen= new();
     gen = new(gen2drv,drv2gen);
-    drv = new(gen2drv,drv2gen,dri2scr,vif_fifo);
-    mon = new(mon2scb,vif_fifo);
+    drv = new(vif_fifo,gen2drv,drv2gen,dri2scr);
+    mon = new(vif_fifo,mon2scb);
     scb = new(dri2scr,mon2scb);
   endfunction
   
