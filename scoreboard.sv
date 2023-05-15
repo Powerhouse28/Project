@@ -29,7 +29,7 @@ mailbox mon2scb, drv2scr;
  
   task main;
    forever begin   
-    
+	   $display("yup2");
     #50
       drv2scr=new();
       mon2scb=new();
@@ -43,7 +43,7 @@ if(trans_score_in.wr_en)begin
     if(trans_score_in.rd_en)begin
      if(trans_score_in.data_out == fifo[r_ptr])begin
         r_ptr++;
-        $display("yup");
+	     $display("yup3");
       end
       else begin
         $display("nop");
