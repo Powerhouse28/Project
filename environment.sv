@@ -11,7 +11,7 @@ class environment;
   scoreboard scb;
   
   mailbox gen2drv,drv2gen;
-  mailbox mon2scb,dri2scr;
+  mailbox mon2scb,drv2scr;
   
   //event drv2gen;//to show generation of signals have stopped
   virtual fifo_intf vif_fifo;
@@ -20,12 +20,12 @@ class environment;
     this.vif_fifo = vif_fifo;
     gen2drv = new();
     mon2scb = new();
-    dri2scr=new();
+    drv2scr=new();
     drv2gen= new();
     gen = new(gen2drv,drv2gen);
-    drv = new(vif_fifo,gen2drv,drv2gen,dri2scr);
+    drv = new(vif_fifo,gen2drv,drv2gen,drv2scr);
     mon = new(vif_fifo,mon2scb);
-    scb = new(dri2scr,mon2scb);
+    scb = new(drv2scr,mon2scb);
   endfunction
   
   task pre_test();
