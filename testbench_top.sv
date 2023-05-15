@@ -1,15 +1,17 @@
 //`include "interface.sv"
 module tb_top;
  bit clk,rst_n;
- 
+ clk=1'b0;
+ rst_n=1'b0;
  always #5 clk = ~ clk;
  
- initial begin
-  rst_n = 1;
+ always #5 rst_n= ~rst_n;
+ /*initial begin 
+ rst_n = 1;
   #5 rst_n = 0;
- end
+ end*/
  
- fifo_intf intf(clk,rst_n) ;
+ fifo_intf intf() ;
  test t1(intf);
 
  synchronous_fifo DUT
@@ -22,5 +24,4 @@ module tb_top;
           .clk(intf.clk),
           .rst_n(intf.rst_n));
 endmodule
-
 
