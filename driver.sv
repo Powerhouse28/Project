@@ -16,10 +16,10 @@ class driver;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
   //  tr = new();
-    fork
+  //  fork
     reset();
     drive();
-  join_none
+  //join_none
   endfunction  
   
   task reset;
