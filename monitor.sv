@@ -13,17 +13,17 @@ endfunction
 
  
  task main;
-  forever begin
+  begin
    transaction trans_mon;
    trans_mon = new();
    
    wait(vif_fifo.rd_en);
    $display("Reading");
-   @(vif_fifo.monitor_cb);
+  // @(vif_fifo.monitor_cb);
 
    if(`MONITOR_IF.rd_en)begin
     trans_mon.rd_en = `MONITOR_IF.rd_en ;
-    @(vif_fifo.monitor_cb);
+   // @(vif_fifo.monitor_cb);
      trans_mon.data_out = `MONITOR_IF.data_out;
      trans_mon.full = `MONITOR_IF.full;
      trans_mon.empty = `MONITOR_IF.empty;
