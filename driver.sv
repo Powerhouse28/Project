@@ -49,6 +49,7 @@ class driver;
     `DRIVER_IF.data_in <= tr.data_in;
     `DRIVER_IF.wr_en <= tr.wr_en;
     `DRIVER_IF.rd_en <= tr.rd_en;
+      $display("DONE Driving the output");
     //assert (`DRIVER_IF.data_in == 0) $display("Data in the stack");
     //else  $display("Stack still empty");
   //  @(vif_fifo.driver_cb);
