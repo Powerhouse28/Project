@@ -31,8 +31,9 @@ class driver;
     `DRIVER_IF.data_in <= 0;
     `DRIVER_IF.wr_en <= 0;
    `DRIVER_IF.rd_en <= 0;
+      vif_fifo.rst_n=0;
     end
-    vif_fifo.rst_n=0; 
+    
     //wait(!vif_fifo.rst_n);
     else begin
       $display("done resetting");
