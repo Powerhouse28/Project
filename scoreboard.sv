@@ -26,7 +26,7 @@ mailbox mon2scb, drv2scr;
     fifo[i] = 8'hff;
    end
  endfunction 
- 
+	$display("yup23");
   task main;
    forever begin   
 	   $display("yup2");
