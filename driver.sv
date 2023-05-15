@@ -16,10 +16,10 @@ class driver;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
   //  tr = new();
-  //  fork
+  fork
     reset();
     drive();
-  //join_none
+  join_none
   endfunction  
   
   task reset;
@@ -27,16 +27,22 @@ class driver;
   gen2drv.get(tr);
   $display("resetting");
   //  wait(vif_fifo.rst_n);
+  if(vif_fifo.rst_n);
+  begin
     //`DRIVER_IF.data_in <= 0;
    // `DRIVER_IF.wr_en <= 0;
    // `DRIVER_IF.rd_en <= 0;
    // wait(!vif_fifo.rst_n);
+  end
+  if (!vif_fifo.rst_n);
+  begin
     $display("done resetting");
+  end
   endtask
 
   task drive;
     repeat(10) begin
-    tr = new();
+    //tr = new();
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
     `DRIVER_IF.wr_en <= tr.wr_en;
