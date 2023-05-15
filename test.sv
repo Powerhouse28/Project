@@ -1,5 +1,5 @@
-`include "environment.sv"
-program test(fifo_if intf);
+//`include "environment.sv"
+program test(fifo_intf intf);
   environment env;
   
   initial begin
@@ -7,5 +7,6 @@ program test(fifo_if intf);
     env = new(intf);
     env.gen.repeat_count = 10;
     env.run();
+   // $finish();
   end
 endprogram
