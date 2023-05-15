@@ -30,7 +30,7 @@ mailbox mon2scb, drv2scr;
 	
   task main;
    forever begin   
-	   $display("yup2");
+	 
     #50
       drv2scr=new();
       mon2scb=new();
@@ -38,6 +38,7 @@ mailbox mon2scb, drv2scr;
     drv2scr.get(trans_score_in);
     cov.sample();
 if(trans_score_in.wr_en)begin
+	  $display("yup2");
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     end  
