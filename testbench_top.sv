@@ -3,9 +3,9 @@ module tb_top;
  
 bit clk=1'b0;
 bit rst_n=1'b0;
- always #5 clk = ~ clk;
+ always #10 clk = ~ clk;
  
- always #5 rst_n= ~rst_n;
+// always #10 rst_n= ~rst_n;
  /*initial begin 
  rst_n = 1;
   #5 rst_n = 0;
