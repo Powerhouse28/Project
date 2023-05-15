@@ -28,9 +28,9 @@ class driver;
   //  wait(vif_fifo.rst_n);
   if(vif_fifo.rst_n);
   begin
-    //`DRIVER_IF.data_in <= 0;
-   // `DRIVER_IF.wr_en <= 0;
-   // `DRIVER_IF.rd_en <= 0;
+    `DRIVER_IF.data_in <= 0;
+    `DRIVER_IF.wr_en <= 0;
+    `DRIVER_IF.rd_en <= 0;
    // wait(!vif_fifo.rst_n);
   end
   //@(vif_fifo.driver_cb);
