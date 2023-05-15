@@ -43,7 +43,7 @@ class driver;
   endtask
 
   task drive;
-    repeat(10) begin
+     begin
     //tr = new();
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
@@ -58,7 +58,7 @@ class driver;
        drv2gen.put(tr);
       //tr = new();
       drv2scr.put(tr);
-       $display("above Finished driving");
+       //$display("above Finished driving");
      //@(vif_fifo.driver_cb);
   //  end
 
