@@ -6,13 +6,13 @@ mailbox mon2scb, drv2scr;
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
  
-	covergroup cov;
+	/*covergroup cov;
 		//write the functional coverage definition here
 		coverpoint trans_score_in.data_in;
 
 		option.auto_bin_max = 16;
 	
-	endgroup
+	endgroup*/
  
  
  function new(mailbox mon2scb,drv2scr);
@@ -36,7 +36,7 @@ mailbox mon2scb, drv2scr;
       mon2scb=new();
     mon2scb.get(trans_score_out);
     drv2scr.get(trans_score_in);
-    cov.sample();
+    //cov.sample();
 trans_score_in.wr_en=1;trans_score_in.rd_en=1;
 if(trans_score_in.wr_en)begin
 	  $display("yup2");
