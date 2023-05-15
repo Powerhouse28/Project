@@ -33,6 +33,7 @@ class driver;
    // `DRIVER_IF.rd_en <= 0;
    // wait(!vif_fifo.rst_n);
   end
+  @(vif_fifo.driver_cb);
   wait (!vif_fifo.rst_n);
   begin
     $display("done resetting");
@@ -49,7 +50,7 @@ class driver;
     `DRIVER_IF.rd_en <= tr.rd_en;
     //assert (`DRIVER_IF.data_in == 0) $display("Data in the stack");
     //else  $display("Stack still empty");
-  //  @(vif_fifo.driver_cb);
+  @(vif_fifo.driver_cb);
     // forever begin
       begin
       //tr = new();
