@@ -1,6 +1,6 @@
 //`include "transaction.sv"
 class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
-$display("in scoreborad")
+	$display("in scoreborad");
  transaction trans_score_in, trans_score_out;
 mailbox mon2scb, drv2scr;
  int no_trans;
