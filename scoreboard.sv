@@ -1,6 +1,5 @@
 //`include "transaction.sv"
 class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
-	$display("in scoreborad");
  transaction trans_score_in, trans_score_out;
 mailbox mon2scb, drv2scr;
  int no_trans;
@@ -17,7 +16,7 @@ mailbox mon2scb, drv2scr;
  
  
  function new(mailbox mon2scb,drv2scr);
-	
+	$display("yup");
    this.mon2scb = mon2scb;
   mon2scb=new();
   this.drv2scr = drv2scr;
