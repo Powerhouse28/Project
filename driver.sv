@@ -24,7 +24,6 @@ class driver;
   
   task reset;
   tr = new();
-  gen2drv.get(tr);
   $display("resetting");
   //  wait(vif_fifo.rst_n);
   if(vif_fifo.rst_n);
@@ -42,6 +41,7 @@ class driver;
 
   task drive;
     repeat(10) begin
+      gen2drv.get(tr);
     //tr = new();
     $display("Driving the output");
     `DRIVER_IF.data_in <= tr.data_in;
