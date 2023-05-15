@@ -58,6 +58,7 @@ class driver;
        drv2gen.put(tr);
       //tr = new();
       drv2scr.put(tr);
+       $display("above Finished driving");
     //  @(vif_fifo.driver_cb);
     end
 
