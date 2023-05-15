@@ -24,7 +24,8 @@ endfunction
    $display("Reading");
   // @(vif_fifo.monitor_cb);
 
-   if(`MONITOR_IF.rd_en)begin
+  // if(`MONITOR_IF.rd_en)
+      begin
     trans_mon.rd_en = `MONITOR_IF.rd_en ;
    // @(vif_fifo.monitor_cb);
      trans_mon.data_out = `MONITOR_IF.data_out;
