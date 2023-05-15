@@ -26,6 +26,10 @@ mailbox mon2scb, drv2scr;
     fifo[i] = 8'hff;
    end
 	 $display("yup23");
+	  fork
+    main();
+  
+  join_none
  endfunction 
 	
   task main;
