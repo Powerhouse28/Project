@@ -6,6 +6,7 @@ class transaction;
   bit[7:0]data_out;
   bit full,empty;
   
+  $display("data_in = %h" data_in);
   constraint wr_rd_en{wr_en != rd_en;};
 
 endclass
