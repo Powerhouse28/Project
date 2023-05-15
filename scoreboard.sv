@@ -30,13 +30,14 @@ mailbox mon2scb, drv2scr;
 	
   task main;
     begin   
-	    $display("yup21"); 
+	   $display("yup21"); 
       drv2scr=new();
       mon2scb=new();
     mon2scb.get(trans_score_out);
     drv2scr.get(trans_score_in);
     cov.sample();
-trans_score_in.wr_en=1;trans_score_in.rd_en=1;
+trans_score_in.wr_en=1;
+	    //trans_score_in.rd_en=1;
 if(trans_score_in.wr_en)begin
 	  $display("yup2");
      fifo[w_ptr] = trans_score_in.data_in;
@@ -54,7 +55,7 @@ if(trans_score_in.wr_en)begin
         $display("nop");
       end
     end
-    assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t      Output is %h and is as expected Success",$time, trans_score_out.data_out);
+    assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t  Output is %h and is as expected Success",$time, trans_score_out.data_out);
     else $error("%t Output is wrong, Failed",$time);
     if(trans_score_in.full)begin
       $display("fifo is full");
