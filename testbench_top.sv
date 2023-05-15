@@ -2,13 +2,15 @@
 module tb_top;
  bit clk,rst_n;
  
+ initial begin 
+ rst_n = 1;
+ clk = 1;
+  //#15 rst_n = 0;
+ end
+ 
  always #5 clk = ~ clk;
  
  always #5 rst_n= ~rst_n;
- /*initial begin 
- rst_n = 1;
-  #5 rst_n = 0;
- end*/
  
  fifo_intf intf() ;
  test t1(intf);
