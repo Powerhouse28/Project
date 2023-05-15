@@ -16,8 +16,8 @@ endfunction
   begin
    transaction trans_mon;
    trans_mon = new();
-   
-   wait(vif_fifo.rd_en);
+   vif_fifo.rd_en=1;
+   if(vif_fifo.rd_en);
    $display("Reading");
   // @(vif_fifo.monitor_cb);
 
