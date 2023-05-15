@@ -1,8 +1,8 @@
 //`include "interface.sv"
 module tb_top;
- bit clk,rst_n;
- clk=1'b0;
- rst_n=1'b0;
+ 
+bit clk=1'b0;
+bit rst_n=1'b0;
  always #5 clk = ~ clk;
  
  always #5 rst_n= ~rst_n;
