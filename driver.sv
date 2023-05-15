@@ -53,12 +53,12 @@ class driver;
     //else  $display("Stack still empty");
   //@(vif_fifo.driver_cb);
     // forever begin
-      begin
+/*      begin
       //tr = new();
       drv2scr.put(tr);
   //    @(vif_fifo.driver_cb);
     end
-
+*/
     end
      $display("Finished driving");
   endtask
