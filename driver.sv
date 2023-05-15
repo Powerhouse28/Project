@@ -17,7 +17,7 @@ class driver;
     this.drv2scr = drv2scr;
   //  tr = new();
   fork
-    reset();
+    reset(); 
     drive();
   join_none
   endfunction  
