@@ -25,13 +25,14 @@ class driver;
   
   task reset;
   tr = new();
- 
+ vif_fifo.rst_n=1; 
   $display("resetting");
     if(vif_fifo.rst_n) begin
     `DRIVER_IF.data_in <= 0;
     `DRIVER_IF.wr_en <= 0;
    `DRIVER_IF.rd_en <= 0;
     end
+    vif_fifo.rst_n=0; 
     //wait(!vif_fifo.rst_n);
     else begin
       $display("done resetting");
