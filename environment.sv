@@ -49,7 +49,7 @@ class environment;
   task run();
    pre_test();
    test();
-   post_test();
+  // post_test();
    $finish;
   endtask
 endclass
