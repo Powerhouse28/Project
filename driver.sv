@@ -17,7 +17,7 @@ class driver;
     this.drv2scr = drv2scr;
   //  tr = new();
   fork
-   // reset(); 
+    reset(); 
     drive();
   join_none
   endfunction  
@@ -53,12 +53,11 @@ class driver;
     //else  $display("Stack still empty");
   //@(vif_fifo.driver_cb);
     // forever begin
-/*      begin
+      begin
       //tr = new();
       drv2scr.put(tr);
   //    @(vif_fifo.driver_cb);
     end
-*/
     end
      $display("Finished driving");
   endtask
