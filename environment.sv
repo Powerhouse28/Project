@@ -41,7 +41,7 @@ class environment;
   endtask
   
   task post_test();
-   wait(drv2gen.triggered);
+  // wait(drv2gen.triggered);
    wait(gen.repeat_count == drv.no_trans);
    wait(gen.repeat_count == scb.no_trans);
   endtask
