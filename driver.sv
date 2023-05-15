@@ -25,7 +25,7 @@ class driver;
   
   task reset;
   tr = new();
-// vif_fifo.rst_n=1; 
+//  
   
     if(vif_fifo.rst_n) begin
       $display("resetting");
@@ -37,6 +37,7 @@ class driver;
     
     //wait(!vif_fifo.rst_n);
     else begin
+      vif_fifo.rst_n=1;
       $display("done resetting");
     end
   endtask
