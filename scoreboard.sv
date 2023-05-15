@@ -30,8 +30,7 @@ mailbox mon2scb, drv2scr;
 	
   task main;
     begin   
-	 
-    #50
+	    $display("yup21"); 
       drv2scr=new();
       mon2scb=new();
     mon2scb.get(trans_score_out);
