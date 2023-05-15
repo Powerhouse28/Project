@@ -5,12 +5,10 @@ module tb_top;
  always #5 clk = ~ clk;
  
  always #5 rst_n= ~rst_n;
- 
- initial begin 
+ /*initial begin 
  rst_n = 1;
-  //#5 rst_n = 0;
-clk = 1;
- end
+  #5 rst_n = 0;
+ end*/
  
  fifo_intf intf() ;
  test t1(intf);
