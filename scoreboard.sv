@@ -21,7 +21,7 @@ mailbox mon2scb, drv2scr;
   mon2scb=new();
   this.drv2scr = drv2scr;
   drv2scr=new();
-  cov = new;
+ // cov = new;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
    end
