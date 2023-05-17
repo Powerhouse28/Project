@@ -28,6 +28,7 @@ mailbox #(transaction) mon2scb, drv2scr;
 	
   task main;
    //forever
+   $display("\t\t Scoreboard ");
    w_ptr=0;
    r_ptr=0;
    repeat (10) begin   

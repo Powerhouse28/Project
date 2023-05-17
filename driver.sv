@@ -28,6 +28,7 @@ class driver;
   endtask
 
   task drive;
+  $display("\t\t DRIVER");
     repeat(repeat_count) begin
       gen2drv.get(this.tr);
       drv2scr.put(tr);

@@ -14,7 +14,7 @@ this.drv2mon = drv2mon;
 endfunction
 
  task main;
-  $display("Monitor");
+  $display("\t\t MONITOR");
   repeat(repeat_count) begin
    //trans_mon = new();
    drv2mon.get(trans_mon); // driver to mon

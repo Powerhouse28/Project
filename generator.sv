@@ -16,7 +16,7 @@ class generator;
   
 task main();
   
-
+$display("\t\t GENERATOR");
   repeat (repeat_count) begin
     transaction trans_gen = new();
     if (!trans_gen.randomize())
