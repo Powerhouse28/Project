@@ -55,10 +55,10 @@ mailbox #(transaction) mon2scb, drv2scr;
     if(trans_score_out.rd_en)begin
       if(trans_score_out.data_out == fifo[r_ptr])begin
         //r_ptr++;
-	      $display("yup");
+	      $display("\t\t***FIFO Success***");
       end
       else begin
-        $display("nop");
+        $display("\t\t***FIFO Failed***");
       end
       r_ptr++;
     //  $display("Read pointer %h",r_ptr);

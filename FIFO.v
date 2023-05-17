@@ -50,7 +50,7 @@ module synchronous_fifo
   end
   
   //to assign full and empty flags
-  assign full = ((w_ptr+1'b1) >= r_ptr);
+  assign full = ((w_ptr+1'b1) == r_ptr);
   assign empty = (w_ptr == r_ptr);
 
 endmodule
