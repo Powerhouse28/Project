@@ -23,7 +23,7 @@ mailbox #(transaction) mon2scb, drv2scr;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
    end
-	 $display("yup23");
+	 //$display("yup23");
  endfunction 
 	
   task main;
@@ -31,7 +31,7 @@ mailbox #(transaction) mon2scb, drv2scr;
    w_ptr=0;
    r_ptr=0;
    repeat (10) begin   
-	   $display("yup2");
+	 //  $display("yup2");
     //#50
       //drv2scr=new();
       //mon2scb=new();
@@ -54,7 +54,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     if(trans_score_out.rd_en)begin
       if(trans_score_out.data_out == fifo[r_ptr])begin
         //r_ptr++;
-	      $display("yup3");
+	      $display("yup");
       end
       else begin
         $display("nop");
@@ -66,7 +66,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-	      $display("-> Output is %h and is as expected Success \n",$time, trans_score_out.data_in);
+	      $display("Output is %h and is as expected Success \n",$time, trans_score_out.data_in);
     
       end
     else $error("%t Output is wrong, Failed \n",$time);
