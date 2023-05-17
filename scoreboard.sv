@@ -73,14 +73,12 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
     else $error("%t Output is wrong, Failed \n",$time);
     
-    $display("fifo : %p", fifo);
-
     if(trans_score_out.full)begin
-    $display("|>	fifo is full \n");
+    $display("|>	fifo is full                                                                                                          |");
     end
     
     if(trans_score_out.empty)begin
-    $display("|>	fifo is empty\n");
+    $display("|>	fifo is empty                                                                                                         |");
     end
     no_trans++;
     $display("|>  %t : trans_score_out IN : %h OUT : %h \t trans_score_in IN : %h OUT : %h                         |",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
