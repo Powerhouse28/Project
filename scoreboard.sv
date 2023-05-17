@@ -59,7 +59,7 @@ mailbox #(transaction) mon2scb, drv2scr;
 	      $display("|> yup                                                                                                                |");
       end
       else begin
-        $display("|> nop                                                                                                                    |");
+        $display("|> nop                                                                                                                   |");
       end
       //r_ptr++;
     //  $display("Read pointer %h",r_ptr);
