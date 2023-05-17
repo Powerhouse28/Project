@@ -39,8 +39,6 @@ mailbox #(transaction) mon2scb, drv2scr;
       drv2scr.get(this.trans_score_in);
       mon2scb.get(this.trans_score_out);
       cov.sample();
-    $display("|------------------------------------------------------------------------------------------------------------------------|");
-
 	  $display("|> Transaction_in : Out %h In %h                                                                                         |",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
       if(trans_score_in.wr_en) begin
@@ -82,6 +80,8 @@ mailbox #(transaction) mon2scb, drv2scr;
     end
     no_trans++;
     $display("|>  %t : trans_score_out IN : %h OUT : %h \t trans_score_in IN : %h OUT : %h                         |",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
+        $display("|------------------------------------------------------------------------------------------------------------------------|");
+
    end
   endtask
 endclass
