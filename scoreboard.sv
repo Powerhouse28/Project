@@ -40,7 +40,7 @@ mailbox #(transaction) mon2scb, drv2scr;
       mon2scb.get(this.trans_score_out);
       cov.sample();
 
-	   $display("-> Trans_score_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
+	   $display("-> Transaction_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
       if(!trans_score_in.wr_en) begin
      fifo[w_ptr] = trans_score_in.data_in;

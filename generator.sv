@@ -23,7 +23,7 @@ $display("\t\t GENERATOR");
       $fatal("Gen::trans randomization failed");
 
     gen2drv.put(trans_gen);
-    $display("Data in:\t%h", trans_gen.data_in);
+   // $display("Data in:\t%h", trans_gen.data_in);
   end
 
  // ->drv2gen;
