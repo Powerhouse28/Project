@@ -20,11 +20,12 @@ endfunction
    drv2mon.get(trans_mon); // driver to mon
     
     @(`MONITOR_IF);
+//    $display("|------------------------------------------------------------------------------------------------------------------------|");
 
     trans_mon.data_out = `MONITOR_IF.data_out; // this has to be done full and empty flags
     trans_mon.full =`MONITOR_IF.full;
     trans_mon.empty =`MONITOR_IF.empty;
-    $display("Data out : %h",`MONITOR_IF.data_out);
+    $display("|>Data out : %h                                                                                                          |",`MONITOR_IF.data_out);
  
   mon2scb.put(trans_mon);
  end  
