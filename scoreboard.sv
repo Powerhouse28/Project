@@ -2,7 +2,7 @@
 class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
  transaction trans_score_in, trans_score_out;
 mailbox #(transaction) mon2scb, drv2scr;
- int no_trans;
+ int no_trans, repeat_count;
 
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr=0, r_ptr=0;
