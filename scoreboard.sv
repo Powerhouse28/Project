@@ -63,7 +63,7 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
       //r_ptr++;
     //  $display("Read pointer %h",r_ptr);
-	    $display("|> Monitor data: %h",this.trans_score_out.data_in);
+	    $display("|> Monitor data: %h                                                                                                     |",this.trans_score_out.data_in);
     end
     
     if (trans_score_out.data_out == trans_score_in.data_out)
