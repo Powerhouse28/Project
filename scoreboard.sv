@@ -72,7 +72,9 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
     else $error("%t Output is wrong, Failed \n",$time);
     
-    if(fifo.size() == 8)begin //trans_score_out.full or f
+    $display("fifo : %p", fifo);
+
+    if(trans_score_out.full)begin
     $display("->	fifo is full \n");
     end
     
