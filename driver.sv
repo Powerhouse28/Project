@@ -35,13 +35,13 @@ class driver;
     //tr = new();
      $display("|------------------------------------------------------------------------------------------------------------------------|");
      $display("|Driving the output                                                                                                      |");
-     $display("|>data_in = %h\tWrite: %h\t Read: %h                                                                                     |", tr.data_in,  tr.wr_en,  tr.rd_en );
+     $display("|>data_in = %h\tWrite: %h\t Read: %h                                                                                 |", tr.data_in,  tr.wr_en,  tr.rd_en );
      @(`DRIVER_IF);
       //#2;
      `DRIVER_IF.data_in <= tr.data_in;
      `DRIVER_IF.wr_en <= tr.wr_en;
      `DRIVER_IF.rd_en <=tr.rd_en;
-
+    
      //@(negedge vif_fifo.clk);
      //`DRIVER_IF.wr_en <= 0;
      //`DRIVER_IF.rd_en <= 1;
