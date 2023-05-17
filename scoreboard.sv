@@ -43,7 +43,7 @@ mailbox #(transaction) mon2scb, drv2scr;
 	   $display("-> Transaction_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
       if(trans_score_in.wr_en) begin
-     fifo[w_ptr] = trans_score_in.data_in;
+     fifo[w_ptr] = trans_score_in.data_out;
       w_ptr++;
     //  $display("Write pointer %h",w_ptr);
       //$display("Driver data: %h",this.trans_score_in.data_in);
@@ -53,7 +53,7 @@ mailbox #(transaction) mon2scb, drv2scr;
   //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
     if(trans_score_out.rd_en)begin
-      if(trans_score_out.data_in == fifo[r_ptr])begin
+      if(trans_score_out.data_out == fifo[r_ptr])begin
         //r_ptr++;
 	      $display("yup");
       end
