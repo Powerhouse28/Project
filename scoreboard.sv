@@ -56,19 +56,19 @@ mailbox #(transaction) mon2scb, drv2scr;
     if(trans_score_out.rd_en)begin
       if(trans_score_out.data_in == fifo[r_ptr])begin
         r_ptr++;
-	      $display("yup");
+	      $display("|> yup");
       end
       else begin
-        $display("nop");
+        $display("|> nop");
       end
       //r_ptr++;
     //  $display("Read pointer %h",r_ptr);
-	    $display("-> Monitor data: %h",this.trans_score_out.data_in);
+	    $display("|> Monitor data: %h",this.trans_score_out.data_in);
     end
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-        $display("-> %t : Output is %h , %h and is as expected Success                                                                  |\n",$time, trans_score_out.data_in, trans_score_out.data_out);
+        $display("|> %t : Output is %h , %h and is as expected Success                                                                  |\n",$time, trans_score_out.data_in, trans_score_out.data_out);
     
       end
     else $error("%t Output is wrong, Failed \n",$time);
@@ -76,11 +76,11 @@ mailbox #(transaction) mon2scb, drv2scr;
     $display("fifo : %p", fifo);
 
     if(trans_score_out.full)begin
-    $display("->	fifo is full \n");
+    $display("|>	fifo is full \n");
     end
     
     if(trans_score_out.empty)begin
-    $display("->	fifo is empty\n");
+    $display("|>	fifo is empty\n");
     end
     no_trans++;
     $display("|>  %t : trans_score_out IN : %h OUT : %h \t trans_score_in IN : %h OUT : %h                                            |\n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
