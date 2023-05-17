@@ -70,9 +70,9 @@ mailbox #(transaction) mon2scb, drv2scr;
                    
       end
     else $error("%t Output is wrong, Failed \n",$time);
-    
+         
     if(trans_score_out.full)begin
-    $display("|>	fifo is full                                                                                                          |");
+    $display("|>	fifo is full                                                                                                    |");
     end
     
     if(trans_score_out.empty)begin
