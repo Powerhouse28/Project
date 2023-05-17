@@ -53,7 +53,7 @@ mailbox #(transaction) mon2scb, drv2scr;
   //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
     if(trans_score_out.rd_en)begin
-      if(trans_score_out.data_out == fifo[r_ptr])begin
+      if(trans_score_out.fifo[r_ptr] == fifo[r_ptr])begin
         //r_ptr++;
 	      $display("yup");
       end
