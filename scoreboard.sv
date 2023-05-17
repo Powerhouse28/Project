@@ -48,7 +48,7 @@ mailbox #(transaction) mon2scb, drv2scr;
       //$display("Driver data: %h",this.trans_score_in.data_in);
     end 
 
-    $display("->	Trans_score_out : Out %h In %h",trans_score_out.data_out,trans_score_out.data_in);
+    //$display("->	Trans_score_out : Out %h In %h",trans_score_out.data_out,trans_score_out.data_in);
   //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
     if(trans_score_out.rd_en)begin
