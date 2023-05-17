@@ -54,13 +54,13 @@ mailbox #(transaction) mon2scb, drv2scr;
 
     if(trans_score_out.rd_en)begin
       if(trans_score_out.data_in == fifo[r_ptr])begin
-        //r_ptr++;
+        r_ptr++;
 	      $display("yup");
       end
       else begin
         $display("nop");
       end
-      r_ptr++;
+      //r_ptr++;
     //  $display("Read pointer %h",r_ptr);
 	    $display("-> Monitor data: %h",this.trans_score_out.data_in);
     end
@@ -82,6 +82,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     $display("->	fifo is empty\n");
     end
     no_trans++;
+    $display("\t\t-> %t : trans_score_out IN : %h OUT : %h \t\t trans_score_in IN : %h OUT : %h \n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
    end
   endtask
 endclass
