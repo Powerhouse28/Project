@@ -7,7 +7,7 @@ int repeat_count;
 transaction trans_mon;
 
 function new(virtual fifo_intf vif_fifo,mailbox #(transaction) mon2scb,drv2mon);
-$display("\t\t MONITOR");
+//$display("\t\t MONITOR");
 this.vif_fifo =vif_fifo;
 this.mon2scb = mon2scb;
 this.drv2mon = drv2mon;

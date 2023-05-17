@@ -16,7 +16,7 @@ mailbox #(transaction) mon2scb, drv2scr;
  
  
  function new(mailbox #(transaction) mon2scb,drv2scr);
-	$display("\t\t Scoreboard ");
+	//$display("\t\t Scoreboard ");
    this.mon2scb = mon2scb;
   this.drv2scr = drv2scr;
   cov = new;

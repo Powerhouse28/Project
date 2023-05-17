@@ -9,7 +9,7 @@ class generator;
  // event drv2gen;
 
   function new( mailbox #(transaction) gen2drv);
-  $display("\t\t GENERATOR");
+  //$display("\t\t GENERATOR");
     this.gen2drv = gen2drv;
     //this.drv2gen = drv2gen;  
   endfunction
