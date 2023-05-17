@@ -75,11 +75,11 @@ mailbox #(transaction) mon2scb, drv2scr;
     $display("fifo : %p", fifo);
 
     if(trans_score_out.full)begin
-    $display("->	fifo is full \n");
+    $display("->	\t\t *** fifo is full \n");
     end
     
     if(trans_score_out.empty)begin
-    $display("->	fifo is empty\n");
+    $display("->	\t\tfifo is empty\n");
     end
     no_trans++;
    end
