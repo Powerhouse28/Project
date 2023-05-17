@@ -6,7 +6,9 @@ program test(fifo_intf intf);
     $vcdpluson;
     env = new(intf);
     env.gen.repeat_count = 10;
+    env.drv.repeat_count = 10;
+    env.mon.repeat_count = 10;
     env.run();
-   // $finish();
+   //$finish();
   end
 endprogram

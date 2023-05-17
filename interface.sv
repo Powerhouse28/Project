@@ -3,7 +3,7 @@
 //#parameter DATA_WIDTH=8;
 //#parameter DEPTH= 8;
 
-interface fifo_intf#(parameter DATA_WIDTH=8, DEPTH= 8);
+interface fifo_intf#(parameter DATA_WIDTH=8, DEPTH= 8)( input bit clk);
 reg clk,rst_n;
 reg wr_en, rd_en;
 reg [DATA_WIDTH-1:0] data_in;

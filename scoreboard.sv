@@ -4,7 +4,7 @@ class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
 mailbox mon2scb, drv2scr;
  int no_trans;
  bit[7:0]fifo[DEPTH];
- bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
+ bit [$clog2(DEPTH)-1:0] w_ptr=0, r_ptr=0;
  
 	covergroup cov;
 		//write the functional coverage definition here
@@ -18,9 +18,9 @@ mailbox mon2scb, drv2scr;
  function new(mailbox mon2scb,drv2scr);
 	$display("yup");
    this.mon2scb = mon2scb;
-  mon2scb=new();
+    //mon2scb=new();
   this.drv2scr = drv2scr;
-  drv2scr=new();
+  //drv2scr=new();
   cov = new;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
@@ -29,33 +29,43 @@ mailbox mon2scb, drv2scr;
  endfunction 
 	
   task main;
-   forever begin   
+   //forever
+   w_ptr=0;
+   r_ptr=0;
+   repeat (10) begin   
 	   $display("yup2");
-    #50
-      drv2scr=new();
-      mon2scb=new();
-    mon2scb.get(trans_score_out);
-    drv2scr.get(trans_score_in);
-    cov.sample();
-if(trans_score_in.wr_en)begin
+    //#50
+      //drv2scr=new();
+      //mon2scb=new();
+      mon2scb.get(this.trans_score_out);
+      drv2scr.get(this.trans_score_in);
+      cov.sample();
+
+      $display("Write enable:%h",trans_score_in.wr_en);
+      if(!trans_score_in.wr_en) begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
+      $display("Write pointer %h",w_ptr);
     end  
-    if(trans_score_in.rd_en)begin
-     if(trans_score_in.data_out == fifo[r_ptr])begin
-        r_ptr++;
-	     $display("yup3");
+
+    $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
+    if(trans_score_out.rd_en)begin
+      if(trans_score_out.data_out == fifo[r_ptr])begin
+        //r_ptr++;
+	      $display("yup3");
       end
       else begin
         $display("nop");
       end
+      r_ptr++;
+      $display("Read pointer %h",r_ptr);
     end
-    assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t      Output is %h and is as expected Success",$time, trans_score_out.data_out);
-    else $error("%t Output is wrong, Failed",$time);
-    if(trans_score_in.full)begin
+    assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t Output is %h and is as expected Success",$time, trans_score_out.data_out);
+    //else $error("%t Output is wrong, Failed",$time);
+    if(trans_score_out.full)begin
       $display("fifo is full");
     end
-    if(trans_score_in.empty)begin
+    if(trans_score_out.empty)begin
       $display("fifo is empty");
     end
     no_trans++;

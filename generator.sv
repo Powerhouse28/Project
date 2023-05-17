@@ -13,13 +13,21 @@ class generator;
     this.drv2gen = drv2gen;  
   endfunction
   
-  task main();
-   repeat(repeat_count)begin 
-    trans_gen = new();
-    if(!trans_gen.randomize()) $fatal("Gen::trans randomization failed"); 
-     gen2drv.put(trans_gen);
-   end 
-   ->drv2gen;
-  endtask
+task main();
+  $display("Generator");
+
+  repeat (repeat_count) begin
+    transaction trans_gen = new();
+    if (!trans_gen.randomize())
+      $fatal("Gen::trans randomization failed");
+
+    gen2drv.put(trans_gen);
+    $display("Data in:\t%h", trans_gen.data_in);
+  end
+
+  ->drv2gen;
+endtask
+
+
 
 endclass

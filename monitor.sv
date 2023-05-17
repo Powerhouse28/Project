@@ -3,7 +3,8 @@
 class monitor;
 virtual fifo_intf vif_fifo;
 mailbox mon2scb; // initialising the mailbox
-
+int repeat_count;
+transaction trans_mon;
 
 function new(virtual fifo_intf vif_fifo,mailbox mon2scb);
 this.vif_fifo =vif_fifo;
@@ -13,23 +14,28 @@ endfunction
 
  
  task main;
-  forever begin
-   transaction trans_mon;
+  $display("Monitor");
+  repeat(repeat_count) begin
    trans_mon = new();
-   
-   wait(vif_fifo.rd_en);
-   $display("Reading");
-   @(vif_fifo.monitor_cb);
+    @(posedge vif_fifo.clk);
 
-   if(`MONITOR_IF.rd_en)begin
-    trans_mon.rd_en = `MONITOR_IF.rd_en ;
-    @(vif_fifo.monitor_cb);
+    if(`MONITOR_IF.wr_en) begin
+     trans_mon.wr_en = `MONITOR_IF.wr_en ;
+     trans_mon.data_in = `MONITOR_IF.data_in;
+     trans_mon.full = `MONITOR_IF.full;
+     trans_mon.empty = `MONITOR_IF.empty;
+     $display("Write En: %h\tFIFO Output: %h",`MONITOR_IF.wr_en, `MONITOR_IF.data_in);
+     end
+
+    if(`MONITOR_IF.rd_en) begin
+     trans_mon.rd_en = `MONITOR_IF.rd_en ;
      trans_mon.data_out = `MONITOR_IF.data_out;
      trans_mon.full = `MONITOR_IF.full;
      trans_mon.empty = `MONITOR_IF.empty;
-    $display("\t ADDR= %0h \t DATA IN = %0h",trans_mon.wr_en,trans_mon.data_in);
-   end
-   mon2scb.put(trans_mon);
-  end   
+
+	$display("Read En: %h\tFIFO Output: %h",`MONITOR_IF.rd_en, `MONITOR_IF.data_out);
+  end 
+  mon2scb.put(trans_mon);
+ end  
  endtask
 endclass
