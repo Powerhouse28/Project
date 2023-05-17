@@ -9,12 +9,13 @@ class generator;
  // event drv2gen;
 
   function new( mailbox #(transaction) gen2drv);
+  $display("\t\t GENERATOR");
     this.gen2drv = gen2drv;
     //this.drv2gen = drv2gen;  
   endfunction
   
 task main();
-  $display("Generator");
+  
 
   repeat (repeat_count) begin
     transaction trans_gen = new();

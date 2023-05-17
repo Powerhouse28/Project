@@ -9,6 +9,7 @@ class driver;
   transaction tr;
 
   function new(virtual fifo_intf vif_fifo, mailbox #(transaction) gen2drv, drv2scr,drv2mon);
+    $display("\t\t DRIVER");
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
@@ -17,11 +18,11 @@ class driver;
   endfunction  
   
   task reset;
-  $display("resetting");
+  $display("\t resetting");
   @(`DRIVER_IF);
   `DRIVER_IF.rst_n <= 0;
   @(negedge vif_fifo.clk);
-    $display("done resetting");
+    $display("\t done resetting");
     `DRIVER_IF.rst_n <= 1;
   
   endtask

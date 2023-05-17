@@ -16,7 +16,7 @@ mailbox #(transaction) mon2scb, drv2scr;
  
  
  function new(mailbox #(transaction) mon2scb,drv2scr);
-	$display("yup");
+	$display("\t\t Scoreboard ");
    this.mon2scb = mon2scb;
   this.drv2scr = drv2scr;
   cov = new;
@@ -66,7 +66,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-	      $display("-> %t Output is %h and is as expected Success \n",$time, trans_score_out.data_in);
+	      $display("-> %t : Output is %h and is as expected Success \n",$time, trans_score_out.data_in);
     
       end
     else $error("%t Output is wrong, Failed \n",$time);
