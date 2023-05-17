@@ -82,7 +82,9 @@ mailbox #(transaction) mon2scb, drv2scr;
     $display("->	fifo is empty\n");
     end
     no_trans++;
-    $display("\t\t-> %t : trans_score_out IN : %h OUT : %h \t\t trans_score_in IN : %h OUT : %h \n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
+    $display("-> %t : trans_score_out IN : %h OUT : %h \t\t trans_score_in IN : %h OUT : %h \n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
+    $display("|------------------------------------------------------------------------------------------------------------------------|");
+
    end
   endtask
 endclass
