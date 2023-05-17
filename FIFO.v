@@ -44,7 +44,7 @@ module synchronous_fifo
   begin
     if(rd_en & !empty) 
     begin
-    #2  data_out <= fifo[r_ptr];
+    #3  data_out <= fifo[r_ptr];
       r_ptr <= r_ptr + 1;
     end
   end
