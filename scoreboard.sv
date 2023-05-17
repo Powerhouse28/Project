@@ -43,7 +43,7 @@ mailbox #(transaction) mon2scb, drv2scr;
 	   $display("-> Transaction_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
       if(trans_score_in.wr_en) begin
-     fifo[w_ptr] = trans_score_out.data_in;
+     fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     //  $display("Write pointer %h",w_ptr);
       //$display("Driver data: %h",this.trans_score_in.data_in);
@@ -54,13 +54,13 @@ mailbox #(transaction) mon2scb, drv2scr;
 
     if(trans_score_out.rd_en)begin
       if(trans_score_out.data_out == fifo[r_ptr])begin
-        r_ptr++;
-	      $display("\t\t***FIFO Success***");
+        //r_ptr++;
+	      $display("yup");
       end
       else begin
-        $display("\t\t***FIFO Failed***");
+        $display("nop");
       end
-      //r_ptr++;
+      r_ptr++;
     //  $display("Read pointer %h",r_ptr);
 	    $display("-> Monitor data: %h",this.trans_score_out.data_in);
     end
@@ -72,14 +72,14 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
     else $error("%t Output is wrong, Failed \n",$time);
     
-    $display("fifo : %p trans_score_out.data_out : %p", fifo, trans_score_out.data_out);
+    $display("fifo : %p", fifo);
 
-    if(trans_score_in.full)begin
-    $display("->	\t\t *** fifo is full \n");
+    if(trans_score_out.full)begin
+    $display("->	fifo is full \n");
     end
     
     if(trans_score_out.empty)begin
-    $display("->	\t\tfifo is empty\n");
+    $display("->	fifo is empty\n");
     end
     no_trans++;
    end
