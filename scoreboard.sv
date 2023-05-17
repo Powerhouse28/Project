@@ -31,7 +31,7 @@ mailbox #(transaction) mon2scb, drv2scr;
    $display("\t\t Scoreboard ");
    w_ptr=0;
    r_ptr=0;
-   repeat (repeat_count) begin   
+   repeat (10) begin   
 	 //  $display("yup2");
     //#50
       //drv2scr=new();
