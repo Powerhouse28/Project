@@ -50,7 +50,7 @@ class driver;
      //
      
     end
-     $display("|Finished driving                                                                                                      |");
+     $display("|Finished driving                                                                                                        |");
   endtask
 
 
