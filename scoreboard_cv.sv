@@ -20,8 +20,6 @@ mailbox mon2scb, drv2scr;
     bins min = {8'h0};
     bins mid_max [] = {8'h1:8'hf};
     bins def = default;
-
-        //option.auto_bin_max = 16;
     
     endgroup
  
