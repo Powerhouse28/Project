@@ -66,7 +66,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-	      $display("-> Output is %h and is as expected Success \n",$time, trans_score_out.data_in);
+	      $display("-> Output is %h and is as expected Success \n",$time, trans_score_out.data_out);
     
       end
     else $error("%t Output is wrong, Failed \n",$time);
