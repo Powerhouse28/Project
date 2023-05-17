@@ -39,8 +39,9 @@ mailbox #(transaction) mon2scb, drv2scr;
       drv2scr.get(this.trans_score_in);
       mon2scb.get(this.trans_score_out);
       cov.sample();
+    $display("|------------------------------------------------------------------------------------------------------------------------|");
 
-	   $display("-> Transaction_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
+	  $display("|> Transaction_in : Out %h In %h                                                                                         | \n",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
       if(trans_score_in.wr_en) begin
      fifo[w_ptr] = trans_score_in.data_in;
@@ -67,7 +68,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-	      $display("-> %t : Output is %h , %h and is as expected Success \n",$time, trans_score_out.data_in, trans_score_out.data_out);
+	      $display("-> %t : Output is %h , %h and is as expected Success                                                                  |\n",$time, trans_score_out.data_in, trans_score_out.data_out);
     
       end
     else $error("%t Output is wrong, Failed \n",$time);
@@ -82,9 +83,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     $display("->	fifo is empty\n");
     end
     no_trans++;
-    $display("-> %t : trans_score_out IN : %h OUT : %h \t\t trans_score_in IN : %h OUT : %h \n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
-    $display("|------------------------------------------------------------------------------------------------------------------------|");
-
+    $display("|> %t : trans_score_out IN : %h OUT : %h \t\t trans_score_in IN : %h OUT : %h                                            |\n",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
    end
   endtask
 endclass

@@ -34,7 +34,7 @@ class driver;
       drv2scr.put(tr);
     //tr = new();
     $display("|------------------------------------------------------------------------------------------------------------------------|");
-    $display("Driving the output");
+    $display("|Driving the output                                                                                                      |");
      $display("data_in = %h\tWrite: %h\t Read: %h", tr.data_in,  tr.wr_en,  tr.rd_en );
      @(`DRIVER_IF);
       //#2;
@@ -50,7 +50,7 @@ class driver;
      //
      
     end
-     $display("Finished driving");
+     $display("|Finished driving                                                                                                      |");
   endtask
 
 
