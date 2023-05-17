@@ -2,7 +2,7 @@
 class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
  transaction trans_score_in, trans_score_out;
 mailbox #(transaction) mon2scb, drv2scr;
- int no_trans;
+ int no_trans, repeat_count;
 
  bit[7:0]fifo[DEPTH];
  bit [$clog2(DEPTH)-1:0] w_ptr=0, r_ptr=0;
@@ -16,7 +16,7 @@ mailbox #(transaction) mon2scb, drv2scr;
  
  
  function new(mailbox #(transaction) mon2scb,drv2scr);
-	$display("\t\t Scoreboard ");
+	//$display("\t\t Scoreboard ");
    this.mon2scb = mon2scb;
   this.drv2scr = drv2scr;
   cov = new;
@@ -28,7 +28,8 @@ mailbox #(transaction) mon2scb, drv2scr;
 	
   task main;
    //forever
-   w_ptr=0;
+   $display("\t\t Scoreboard ");
+   w_ptr=1;
    r_ptr=0;
    repeat (10) begin   
 	 //  $display("yup2");
@@ -39,9 +40,9 @@ mailbox #(transaction) mon2scb, drv2scr;
       mon2scb.get(this.trans_score_out);
       cov.sample();
 
-	   $display("-> Trans_score_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
+	   $display("-> Transaction_in : Out %h In %h \n",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
-      if(!trans_score_in.wr_en) begin
+      if(trans_score_in.wr_en) begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     //  $display("Write pointer %h",w_ptr);
@@ -71,6 +72,8 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
     else $error("%t Output is wrong, Failed \n",$time);
     
+    $display("fifo : %p", fifo);
+
     if(trans_score_out.full)begin
     $display("->	fifo is full \n");
     end

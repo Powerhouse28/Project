@@ -7,14 +7,14 @@ int repeat_count;
 transaction trans_mon;
 
 function new(virtual fifo_intf vif_fifo,mailbox #(transaction) mon2scb,drv2mon);
-$$display("\t\t MONITOR");
+//$display("\t\t MONITOR");
 this.vif_fifo =vif_fifo;
 this.mon2scb = mon2scb;
 this.drv2mon = drv2mon;
 endfunction
 
  task main;
-  $display("Monitor");
+  $display("\t\t MONITOR");
   repeat(repeat_count) begin
    //trans_mon = new();
    drv2mon.get(trans_mon); // driver to mon
@@ -24,7 +24,7 @@ endfunction
     trans_mon.data_out = `MONITOR_IF.data_out; // this has to be done full and empty flags
     trans_mon.full =`MONITOR_IF.full;
     trans_mon.empty =`MONITOR_IF.empty;
-    $display("Data out %h",`MONITOR_IF.data_out);
+    $display("Data out : %h",`MONITOR_IF.data_out);
  
   mon2scb.put(trans_mon);
  end  

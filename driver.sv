@@ -9,7 +9,7 @@ class driver;
   transaction tr;
 
   function new(virtual fifo_intf vif_fifo, mailbox #(transaction) gen2drv, drv2scr,drv2mon);
-    $display("\t\t DRIVER");
+  //  $display("\t\t DRIVER");
     this.vif_fifo = vif_fifo;
     this.gen2drv = gen2drv;
     this.drv2scr = drv2scr;
@@ -28,6 +28,7 @@ class driver;
   endtask
 
   task drive;
+  $display("\t\t DRIVER");
     repeat(repeat_count) begin
       gen2drv.get(this.tr);
       drv2scr.put(tr);
