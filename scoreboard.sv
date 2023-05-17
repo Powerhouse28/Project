@@ -53,7 +53,7 @@ mailbox #(transaction) mon2scb, drv2scr;
   //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
     if(trans_score_out.rd_en)begin
-      if(trans_score_in.data_out == fifo[r_ptr])begin
+      if(trans_score_out.data_out == fifo[r_ptr])begin
         r_ptr++;
 	      $display("\t\t***FIFO Success***");
       end
@@ -72,7 +72,7 @@ mailbox #(transaction) mon2scb, drv2scr;
       end
     else $error("%t Output is wrong, Failed \n",$time);
     
-    $display("fifo : %p", fifo);
+    $display("fifo : %p trans_score_out.data_out : %p", fifo, trans_score_out.data_out);
 
     if(trans_score_in.full)begin
     $display("->	\t\t *** fifo is full \n");
