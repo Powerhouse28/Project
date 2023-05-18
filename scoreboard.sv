@@ -48,10 +48,10 @@ mailbox #(transaction) mon2scb, drv2scr;
     if(trans_score_out.rd_en && !trans_score_out.empty)begin
       if(trans_score_out.data_out == fifo[r_ptr])begin
         r_ptr++;
-	      $display("|  yup                                                                                                                |");
+	      $display("|  Write Operation                                                                                                                |");
       end
       else begin
-        $display("|  nop                                                                                                                   |");
+        $display("|  Read Operation                                                                                                                   |");
       end
 	    $display("|  Monitor data: %h                                                                                                      |",this.trans_score_out.data_in);
     end
