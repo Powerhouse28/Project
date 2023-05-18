@@ -33,9 +33,9 @@ class driver;
       gen2drv.get(this.tr);
       drv2scr.put(tr);
     //tr = new();
-     $display("|------------------------------------------------------------------------------------------------------------------------|");
-     $display("|Driving the output                                                                                                      |");
-     $display("|>data_in = %h\tWrite: %h\t Read: %h                                                                                 |", tr.data_in,  tr.wr_en,  tr.rd_en );
+     //$display("|------------------------------------------------------------------------------------------------------------------------|");
+     //$display("|Driving the output                                                                                                      |");
+     //$display("|>data_in = %h\tWrite: %h\t Read: %h                                                                                 |", tr.data_in,  tr.wr_en,  tr.rd_en );
      @(`DRIVER_IF);
       //#2;
      `DRIVER_IF.data_in <= tr.data_in;
@@ -50,7 +50,7 @@ class driver;
      //
      
     end
-     $display("|Finished driving                                                                                                        |");
+    // $display("|Finished driving                                                                                                        |");
   endtask
 
 
