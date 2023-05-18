@@ -7,7 +7,7 @@ class environment;
   
   generator gen;
   driver drv;
-  monitor mon;
+ // monitor mon;
   scoreboard scb;
   
   mailbox #(transaction) gen2drv;
@@ -25,7 +25,7 @@ class environment;
     drv2mon=new(1);
     gen = new(gen2drv);
     drv = new(vif_fifo,gen2drv,drv2scr,drv2mon);
-    mon = new(vif_fifo,mon2scb,drv2mon);
+  //  mon = new(vif_fifo,mon2scb,drv2mon);
     scb = new(drv2scr,mon2scb);
   endfunction
   
@@ -38,7 +38,7 @@ class environment;
    gen.main();
    drv.drive();
    //drv.driveRead();
-   mon.main();
+  // mon.main();
    scb.main();
    join
   endtask
