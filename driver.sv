@@ -46,7 +46,7 @@ class driver;
      //`DRIVER_IF.wr_en <= 0;
      //`DRIVER_IF.rd_en <= 1;
 
-     drv2mon.put(tr);
+    // drv2mon.put(tr);
      //
      
     end
