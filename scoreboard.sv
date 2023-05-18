@@ -46,7 +46,7 @@ mailbox #(transaction) mon2scb, drv2scr;
     end 
 
     if(trans_score_out.rd_en && !trans_score_out.empty)begin
-      if(trans_score_out.data_in == fifo[r_ptr])begin
+      if(trans_score_out.data_out == fifo[r_ptr])begin
         r_ptr++;
 	      $display("|  yup                                                                                                                |");
       end
