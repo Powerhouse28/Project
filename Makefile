@@ -1,6 +1,7 @@
 # Makefile for SystemVerilog Lab1
 RTL= ./FIFO.v		#./regfile.sv
- SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./monitor.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
+ #SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./monitor.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
+ SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
 #SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
 SEED = 1
 
