@@ -39,9 +39,9 @@ mailbox #(transaction) mon2scb, drv2scr;
       drv2scr.get(this.trans_score_in);
       mon2scb.get(this.trans_score_out);
       cov.sample();
-	  $display("|> Transaction_in : Out %h In %h                                                                                         |",trans_score_in.data_out,trans_score_in.data_in);
+	  $display("|  Transaction_in : Out %h In %h                                                                                         |",trans_score_in.data_out,trans_score_in.data_in);
     //  $display("Write enable:%h",trans_score_in.wr_en);
-      if(trans_score_in.wr_en) begin
+      if(trans_score_in.wr_en && !trans_score_out.full) begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
     //  $display("Write pointer %h",w_ptr);
@@ -51,35 +51,35 @@ mailbox #(transaction) mon2scb, drv2scr;
     //$display("->	Trans_score_out : Out %h In %h",trans_score_out.data_out,trans_score_out.data_in);
   //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
-    if(trans_score_out.rd_en)begin
+    if(trans_score_out.rd_en && !trans_score_out.empty)begin
       if(trans_score_out.data_in == fifo[r_ptr])begin
         r_ptr++;
-	      $display("|> yup                                                                                                                |");
+	      $display("|  yup                                                                                                                |");
       end
       else begin
-        $display("|> nop                                                                                                                   |");
+        $display("|  nop                                                                                                                   |");
       end
       //r_ptr++;
     //  $display("Read pointer %h",r_ptr);
-	    $display("|> Monitor data: %h                                                                                                      |",this.trans_score_out.data_in);
+	    $display("|  Monitor data: %h                                                                                                      |",this.trans_score_out.data_in);
     end
     
     if (trans_score_out.data_out == trans_score_in.data_out)
       begin
-        $display("|> %t : Output is %h , %h and is as expected Success                                                   |",$time, trans_score_out.data_in, trans_score_out.data_out);
+        $display("|  %t : Output is %h , %h and is as expected Success                                                   |",$time, trans_score_out.data_in, trans_score_out.data_out);
                    
       end
     else $error("%t Output is wrong, Failed \n",$time);
          
     if(trans_score_out.full)begin
-    $display("|>	fifo is full                                                                                                     |");
+    $display("| 	fifo is full                                                                                                     |");
     end
          
     if(trans_score_out.empty)begin
-    $display("|>	fifo is empty                                                                                                    |");
+    $display("| 	fifo is empty                                                                                                    |");
     end
     no_trans++;
-    $display("|>  %t : trans_score_out IN : %h OUT : %h \t trans_score_in IN : %h OUT : %h                         |",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
+    $display("|   %t : trans_score_out IN : %h OUT : %h \t trans_score_in IN : %h OUT : %h                         |",$time, trans_score_out.data_in, trans_score_out.data_out, trans_score_in.data_in, trans_score_in.data_out);
         $display("|------------------------------------------------------------------------------------------------------------------------|");
 
    end
