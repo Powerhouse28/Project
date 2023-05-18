@@ -26,7 +26,7 @@ class environment;
     gen = new(gen2drv);
     drv = new(vif_fifo,gen2drv,drv2scr,drv2mon);
   //  mon = new(vif_fifo,mon2scb,drv2mon);
-    scb = new(drv2scr,mon2scb);
+    scb = new(drv2scr);
   endfunction
   
   task pre_test();
