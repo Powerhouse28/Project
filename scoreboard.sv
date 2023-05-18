@@ -40,16 +40,10 @@ mailbox #(transaction) mon2scb, drv2scr;
       mon2scb.get(this.trans_score_out);
       cov.sample();
 	  $display("|  Transaction_in : Out %h In %h                                                                                         |",trans_score_in.data_out,trans_score_in.data_in);
-    //  $display("Write enable:%h",trans_score_in.wr_en);
       if(trans_score_in.wr_en && !trans_score_out.full) begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
-    //  $display("Write pointer %h",w_ptr);
-      //$display("Driver data: %h",this.trans_score_in.data_in);
     end 
-
-    //$display("->	Trans_score_out : Out %h In %h",trans_score_out.data_out,trans_score_out.data_in);
-  //  $display("Read enable:%h %h",trans_score_in.rd_en,trans_score_out.rd_en);
 
     if(trans_score_out.rd_en && !trans_score_out.empty)begin
       if(trans_score_out.data_in == fifo[r_ptr])begin
@@ -59,8 +53,6 @@ mailbox #(transaction) mon2scb, drv2scr;
       else begin
         $display("|  nop                                                                                                                   |");
       end
-      //r_ptr++;
-    //  $display("Read pointer %h",r_ptr);
 	    $display("|  Monitor data: %h                                                                                                      |",this.trans_score_out.data_in);
     end
     
