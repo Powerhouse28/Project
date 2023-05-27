@@ -1,64 +1,83 @@
-//`include "transaction.sv"
+
 class scoreboard #(parameter DATA_WIDTH=8, DEPTH= 8);
  transaction trans_score_in, trans_score_out;
-mailbox mon2scb, drv2scr;
- int no_trans;
- bit[7:0]fifo[DEPTH];
- bit [$clog2(DEPTH)-1:0] w_ptr, r_ptr;
- 
-	covergroup cov;
-		//write the functional coverage definition here
-		coverpoint trans_score_in.data_in;
+mailbox #(transaction) mon2scb, drv2scr;
+ int no_trans, err = 0;
 
-		option.auto_bin_max = 16;
-	
-	endgroup
+ bit[7:0]fifo[DEPTH];
+ bit [$clog2(DEPTH)-1:0] w_ptr=0, r_ptr=0;
  
+covergroup cov;
+
+    coverpoint trans_score_in.data_in;
+    coverpoint trans_score_out.data_in;
+    coverpoint trans_score_in.rd_en;
+    coverpoint trans_score_in.wr_en;
+   
+    option.auto_bin_max = 8;
+   
+
+  
+  endgroup
+   
  
- function new(mailbox mon2scb,drv2scr);
+ function new(mailbox #(transaction) mon2scb,drv2scr);
 	$display("yup");
    this.mon2scb = mon2scb;
-  mon2scb=new();
   this.drv2scr = drv2scr;
-  drv2scr=new();
-  cov = new;
+  cov= new;
    foreach(fifo[i])begin
     fifo[i] = 8'hff;
    end
-	 $display("yup23");
+
  endfunction 
 	
   task main;
-   forever begin   
-	   $display("yup2");
+   //forever
+   w_ptr=0;
+   r_ptr=0;
+   repeat (16) begin   
     #50
-      drv2scr=new();
-      mon2scb=new();
-    mon2scb.get(trans_score_out);
-    drv2scr.get(trans_score_in);
-    cov.sample();
-if(trans_score_in.wr_en)begin
+      drv2scr.get(this.trans_score_in);
+      mon2scb.get(this.trans_score_out);
+      cov.sample();
+
+      $display("|                          Trans_score_in : Out %h In %h                                                                 |",trans_score_in.data_out,trans_score_in.data_in);
+   
+      if(trans_score_in.wr_en && !trans_score_out.full) begin
      fifo[w_ptr] = trans_score_in.data_in;
       w_ptr++;
-    end  
-    if(trans_score_in.rd_en)begin
-     if(trans_score_in.data_out == fifo[r_ptr])begin
+              $display("|                      Write operation                                                                                   |");
+
+   
+    end 
+
+    $display("|                          Trans_score_out : Out %h In %h                                                                |",trans_score_out.data_out,trans_score_out.data_in);
+
+    if(trans_score_in.rd_en && !trans_score_out.empty)begin
+      if(trans_score_in.data_out == fifo[r_ptr])begin
         r_ptr++;
-	     $display("yup3");
+	      $display("|                      Read operation                                                                                    |");
       end
       else begin
-        $display("nop");
       end
+      $display("|                          When r_en is %h : Monitor data: %h                                                             |",this.trans_score_in.rd_en,this.trans_score_out.data_out);
     end
-    assert (trans_score_out.data_out == trans_score_in.data_out) $display ("%0t      Output is %h and is as expected Success",$time, trans_score_out.data_out);
-    else $error("%t Output is wrong, Failed",$time);
-    if(trans_score_in.full)begin
-      $display("fifo is full");
-    end
-    if(trans_score_in.empty)begin
-      $display("fifo is empty");
-    end
+    
+    if (trans_score_out.data_out == trans_score_in.data_out)
+      begin
+        $display ("|                     %0t: Success Output is %h and is as expected                                                       |",$time, trans_score_out.data_out);
+    
+      end
+    else begin $display("|                       %t Output is wrong, Failed                                                                     |",$time);
+      err++; end
+    
     no_trans++;
    end
+$display("|-------------------------- Error Count : %d -------------------------------------------------------------------|", err);
+          $display("|------------------------------------------------------------------------------------------------------------------------|");
+
+
   endtask
+
 endclass

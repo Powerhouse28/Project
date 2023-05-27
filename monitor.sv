@@ -2,34 +2,30 @@
 
 class monitor;
 virtual fifo_intf vif_fifo;
-mailbox mon2scb; // initialising the mailbox
+mailbox #(transaction) mon2scb,drv2mon; // initialising the mailbox
+int repeat_count;
+transaction trans_mon;
 
-
-function new(virtual fifo_intf vif_fifo,mailbox mon2scb);
+function new(virtual fifo_intf vif_fifo,mailbox #(transaction) mon2scb,drv2mon);
 this.vif_fifo =vif_fifo;
 this.mon2scb = mon2scb;
+this.drv2mon = drv2mon;
 endfunction
 
-
- 
  task main;
-  forever begin
-   transaction trans_mon;
-   trans_mon = new();
-   
-   wait(vif_fifo.rd_en);
-   $display("Reading");
-   @(vif_fifo.monitor_cb);
+  $display("Monitor");
+  repeat(repeat_count) begin
+   //trans_mon = new();
+   drv2mon.get(trans_mon); // driver to mon
+    
+    @(`MONITOR_IF);
 
-   if(`MONITOR_IF.rd_en)begin
-    trans_mon.rd_en = `MONITOR_IF.rd_en ;
-    @(vif_fifo.monitor_cb);
-     trans_mon.data_out = `MONITOR_IF.data_out;
-     trans_mon.full = `MONITOR_IF.full;
-     trans_mon.empty = `MONITOR_IF.empty;
-    $display("\t ADDR= %0h \t DATA IN = %0h",trans_mon.wr_en,trans_mon.data_in);
-   end
-   mon2scb.put(trans_mon);
-  end   
+    trans_mon.data_out = `MONITOR_IF.data_out; // this has to be done full and empty flags
+    trans_mon.full =`MONITOR_IF.full;
+    trans_mon.empty =`MONITOR_IF.empty;
+    $display("|                          Data out : %h                                                                                 |",`MONITOR_IF.data_out);
+ 
+  mon2scb.put(trans_mon);
+ end  
  endtask
 endclass

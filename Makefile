@@ -1,18 +1,17 @@
 # Makefile for SystemVerilog Lab1
-RTL= ./FIFO.v		#./regfile.sv
-# SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./monitor.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
-SVTB = 	./transaction.sv ./generator.sv ./driver.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
+RTL= 	./FIFO.v	
+SVTB = ./transaction.sv ./generator.sv ./driver.sv ./monitor.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv ./test.sv ./interface.sv	#./tb.sv
 SEED = 1
 
 default: test 
 
-test: compile run
+test: compile run urg
 
 run:
-	./simv -l simv.log +ntb_random_seed=$(SEED)
+	./simv -l simv.log +ntb_random_seed=$(SEED) -assert report="report.txt"
 
 compile:
-	vcs -l vcs.log -sverilog -debug_all -full64 $(SVTB) $(RTL)
+	vcs -l vcs.log -sverilog -debug_all -full64 -timescale_override=1ns/1ps -assert enable_diag +define+ASSERT_ON -y ${VCS_HOME}/packages/sva +libext+.v +incdir+${VCS_HOME}/packages/sva $(SVTB) $(RTL)
 
 dve:
 	dve -vpd vcdplus.vpd &
@@ -25,6 +24,9 @@ solution: clean
 
 clean:
 	rm -rf simv* csrc* *.tmp *.vpd *.key *.log *hdrs.h
+
+urg:
+	urg -dir simv.vdb	
 
 nuke: clean
 	rm -rf *.v* *.sv include .*.lock .*.old DVE* *.tcl *.h
@@ -49,3 +51,4 @@ help:
 	@echo  " nuke       => Erase all changes. Put all files back to original state "
 	@echo  "								       "
 	@echo ==========================================================================
+

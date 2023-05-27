@@ -3,7 +3,7 @@
 //#parameter DATA_WIDTH=8;
 //#parameter DEPTH= 8;
 
-interface fifo_intf#(parameter DATA_WIDTH=8, DEPTH= 8);
+interface fifo_intf#(parameter DATA_WIDTH=8, DEPTH= 8)( input bit clk);
 reg clk,rst_n;
 reg wr_en, rd_en;
 reg [DATA_WIDTH-1:0] data_in;
@@ -29,6 +29,6 @@ clocking monitor_cb@(posedge clk);
 endclocking
   
     modport driver(clocking driver_cb,input clk,rst_n);
-        modport monitor(clocking monitor_cb,input clk,rst_n);
+    modport monitor(clocking monitor_cb,input clk,rst_n);
 
 endinterface

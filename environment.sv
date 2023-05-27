@@ -10,21 +10,23 @@ class environment;
   monitor mon;
   scoreboard scb;
   
-  mailbox gen2drv;
-  mailbox mon2scb,dri2scr;
+  mailbox #(transaction) gen2drv;
+  mailbox #(transaction) mon2scb,drv2scr,drv2mon;
+
   
-  event drv2gen;//to show generation of signals have stopped
+  //event drv2gen;//to show generation of signals have stopped
   virtual fifo_intf vif_fifo;
   
   function new(virtual fifo_intf vif_fifo);
     this.vif_fifo = vif_fifo;
-    gen2drv = new();
-    mon2scb = new();
-    dri2scr=new();
-    gen = new(gen2drv,drv2gen);
-    drv = new(vif_fifo,gen2drv,dri2scr);
-    mon = new(vif_fifo,mon2scb);
-    scb = new(dri2scr,mon2scb);
+    gen2drv = new(1);
+    mon2scb = new(1);
+    drv2scr=new(1);
+    drv2mon=new(1);
+    gen = new(gen2drv);
+    drv = new(vif_fifo,gen2drv,drv2scr,drv2mon);
+    mon = new(vif_fifo,mon2scb,drv2mon);
+    scb = new(drv2scr,mon2scb);
   endfunction
   
   task pre_test();
@@ -32,23 +34,25 @@ class environment;
   endtask
   
   task test();
+   fork
    gen.main();
-   //drv.main();
-    drv.drive();
+   drv.drive();
+   //drv.driveRead();
    mon.main();
    scb.main();
+   join
   endtask
   
-  task post_test();
-   wait(drv2gen.triggered);
-   wait(gen.repeat_count == drv.no_trans);
-   wait(gen.repeat_count == scb.no_trans);
-  endtask
+  //task post_test();
+  // wait(drv2gen.triggered);
+  // if (gen.repeat_count == drv.no_trans);
+  // wait(gen.repeat_count == scb.no_trans);
+  //endtask
   
   task run();
    pre_test();
    test();
-   post_test();
+ // post_test();
    $finish;
   endtask
 endclass
