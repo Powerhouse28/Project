@@ -1,0 +1,163 @@
+Command: /courses/engr850/engr850-30/project_new/./simv -l simv.log +ntb_random_seed=1 -assert report=report.txt
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP1_Full64; Runtime version O-2018.09-SP1_Full64;  May 26 14:43 2023
+VCD+ Writer O-2018.09-SP1_Full64 Copyright (c) 1991-2018 by Synopsys Inc.
+yup
+resetting
+done resetting
+Generator
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 7d	Write: 0	 Read: 1                                                         |
+Monitor
+|                          Data out : 00                                                                                 |
+|                          Trans_score_in : Out 00 In 7d                                                                 |
+|                          Trans_score_out : Out 00 In 7d                                                                |
+|                     65: Success Output is 00 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = c6	Write: 1	 Read: 0                                                         |
+|                          Data out : 00                                                                                 |
+|                          Trans_score_in : Out 00 In c6                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out 00 In c6                                                                |
+|                     115: Success Output is 00 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 8f	Write: 1	 Read: 0                                                         |
+|                          Data out : 00                                                                                 |
+|                          Trans_score_in : Out 00 In 8f                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out 00 In 8f                                                                |
+|                     165: Success Output is 00 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 9f	Write: 1	 Read: 0                                                         |
+|                          Data out : 00                                                                                 |
+|                          Trans_score_in : Out 00 In 9f                                                                 |
+|                          Trans_score_out : Out 00 In 9f                                                                |
+|                     215: Success Output is 00 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 47	Write: 0	 Read: 1                                                         |
+|                          Data out : 00                                                                                 |
+|                          Trans_score_in : Out 00 In 47                                                                 |
+|                          Trans_score_out : Out 00 In 47                                                                |
+|                          When r_en is 1 : Monitor data: 00                                                             |
+|                     265: Success Output is 00 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = cf	Write: 0	 Read: 1                                                         |
+|                          Data out : c6                                                                                 |
+|                          Trans_score_in : Out c6 In cf                                                                 |
+|                          Trans_score_out : Out c6 In cf                                                                |
+|                      Read operation                                                                                    |
+|                          When r_en is 1 : Monitor data: c6                                                             |
+|                     315: Success Output is c6 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = f4	Write: 1	 Read: 0                                                         |
+|                          Data out : 8f                                                                                 |
+|                          Trans_score_in : Out 8f In f4                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out 8f In f4                                                                |
+|                     365: Success Output is 8f and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = bc	Write: 1	 Read: 0                                                         |
+|                          Data out : 8f                                                                                 |
+|                          Trans_score_in : Out 8f In bc                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out 8f In bc                                                                |
+|                     415: Success Output is 8f and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 04	Write: 0	 Read: 1                                                         |
+|                          Data out : 8f                                                                                 |
+|                          Trans_score_in : Out 8f In 04                                                                 |
+|                          Trans_score_out : Out 8f In 04                                                                |
+|                      Read operation                                                                                    |
+|                          When r_en is 1 : Monitor data: 8f                                                             |
+|                     465: Success Output is 8f and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = d7	Write: 1	 Read: 0                                                         |
+|                          Data out : f4                                                                                 |
+|                          Trans_score_in : Out f4 In d7                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out f4 In d7                                                                |
+|                     515: Success Output is f4 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = dd	Write: 1	 Read: 0                                                         |
+|                          Data out : f4                                                                                 |
+|                          Trans_score_in : Out f4 In dd                                                                 |
+|                          Trans_score_out : Out f4 In dd                                                                |
+|                     565: Success Output is f4 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = cb	Write: 0	 Read: 1                                                         |
+|                          Data out : f4                                                                                 |
+|                          Trans_score_in : Out f4 In cb                                                                 |
+|                          Trans_score_out : Out f4 In cb                                                                |
+|                      Read operation                                                                                    |
+|                          When r_en is 1 : Monitor data: f4                                                             |
+|                     615: Success Output is f4 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = f1	Write: 0	 Read: 1                                                         |
+|                          Data out : d7                                                                                 |
+|                          Trans_score_in : Out d7 In f1                                                                 |
+|                          Trans_score_out : Out d7 In f1                                                                |
+|                          When r_en is 1 : Monitor data: d7                                                             |
+|                     665: Success Output is d7 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = c6	Write: 0	 Read: 1                                                         |
+|                          Data out : d7                                                                                 |
+|                          Trans_score_in : Out d7 In c6                                                                 |
+|                          Trans_score_out : Out d7 In c6                                                                |
+|                     715: Success Output is d7 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 13	Write: 1	 Read: 0                                                         |
+|                          Data out : d7                                                                                 |
+|                          Trans_score_in : Out d7 In 13                                                                 |
+|                      Write operation                                                                                   |
+|                          Trans_score_out : Out d7 In 13                                                                |
+|                     765: Success Output is d7 and is as expected                                                       |
+|------------------------------------------------------------------------------------------------------------------------|
+|                                                     Driving the output                                                 |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data_in = 72	Write: 0	 Read: 1                                                         |
+|                                                     Finished driving                                                   |
+|------------------------------------------------------------------------------------------------------------------------|
+|                          Data out : d7                                                                                 |
+|                          Trans_score_in : Out d7 In 72                                                                 |
+|                          Trans_score_out : Out d7 In 72                                                                |
+|                          When r_en is 1 : Monitor data: d7                                                             |
+|                     815: Success Output is d7 and is as expected                                                       |
+|-------------------------- Error Count :           0 -------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------|
+$finish called from file "./environment.sv", line 56.
+$finish at simulation time                  815
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 815
+CPU Time:      0.410 seconds;       Data structure size:   0.0Mb
+Fri May 26 14:43:01 2023

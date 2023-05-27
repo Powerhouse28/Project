@@ -1,0 +1,64 @@
+
+Warning-[TIMES_USG] Incorrect usage of -timescale
+  The usage '-timescale_override=1ns/1ps' is incorrect, ignored.
+  Correct usage: "-timescale=unit/precision"
+
+Command: vcs -l vcs.log -sverilog -debug_all -full64 -timescale_override=1ns/1ps \
+-assert enable_diag +define+ASSERT_ON -y /packages/synopsys/vcs_mx/O-2018.09-SP1/packages/sva \
++libext+.v +incdir+/packages/synopsys/vcs_mx/O-2018.09-SP1/packages/sva ./transaction.sv \
+./generator.sv ./driver.sv ./monitor.sv ./scoreboard.sv ./environment.sv ./testbench_top.sv \
+./test.sv ./interface.sv ./FIFO.v
+*** Using c compiler gcc instead of cc ...
+                         Chronologic VCS (TM)
+       Version O-2018.09-SP1_Full64 -- Fri May 26 14:42:59 2023
+               Copyright (c) 1991-2018 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_all' will be deprecated in a future release.  Please use 
+  '-debug_acc+all -debug_region+cell+encrypt' instead.
+
+Parsing design file './transaction.sv'
+Parsing design file './generator.sv'
+Parsing design file './driver.sv'
+Parsing design file './monitor.sv'
+Parsing design file './scoreboard.sv'
+Parsing design file './environment.sv'
+Parsing design file './testbench_top.sv'
+Parsing design file './test.sv'
+Parsing design file './interface.sv'
+
+Warning-[IPDW] Identifier previously declared
+./interface.sv, 7
+  Second declaration for identifier 'clk' ignored
+  Identifier 'clk' previously declared as input port. [./interface.sv, 6]
+
+Parsing design file './FIFO.v'
+Top Level Modules:
+       tb_top
+No TimeScale specified
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+5 modules and 0 UDP read.
+	However, due to incremental compilation, no re-compilation is necessary.
+make[1]: Entering directory `/courses/engr850/engr850-30/project_new/csrc'
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic  -o .//../simv.daidir//_csrc0.so objs/amcQw_d.o 
+rm -f _csrc0.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv    -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ \
+-Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -rdynamic  -Wl,-rpath=/packages/synopsys/vcs_mx/O-2018.09-SP1/linux64/lib \
+-L/packages/synopsys/vcs_mx/O-2018.09-SP1/linux64/lib     _14834_archive_1.so _prev_archive_1.so \
+_csrc0.so  SIM_l.o  _csrc0.so     rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
+rmar_llvm_0_0.o          -lzerosoft_rt_stubs -lvirsim -lerrorinf -lsnpsmalloc -lvfs \
+-lvcsnew -lsimprofile -luclinative /packages/synopsys/vcs_mx/O-2018.09-SP1/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive -lvcsucli -Wl,-no-whole-archive          /packages/synopsys/vcs_mx/O-2018.09-SP1/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[1]: Leaving directory `/courses/engr850/engr850-30/project_new/csrc'
+CPU time: .315 seconds to compile + .355 seconds to elab + .210 seconds to link
